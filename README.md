@@ -1,4 +1,4 @@
-# shopify
+# Buyit
 
 ## Project setup
 ```
