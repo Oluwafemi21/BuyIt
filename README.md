@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Buy-It
-=======
-# Buyit
->>>>>>> 6b91dd237112e2196e3efa0e42fc5922d2f3dd68
 
 ## Project setup
 
