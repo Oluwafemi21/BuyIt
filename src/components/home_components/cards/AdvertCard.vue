@@ -2,7 +2,7 @@
   <article :style="backgroundColor">
     <h4>{{ advertTitle }}</h4>
     <p>{{ advertText }}</p>
-    <button :v-if="haveButton">{{ buttonText }}</button>
+    <button v-if="haveButton">{{ buttonText }}</button>
   </article>
 </template>
 
@@ -33,7 +33,7 @@ article {
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 49%;
   padding: 3rem;
   color: white;
   min-height: 40vh;

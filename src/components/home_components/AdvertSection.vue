@@ -49,16 +49,15 @@ export default {
 </script>
 
 <style scoped>
-.ad1 {
+.ad1,
+.ad2 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
+  justify-content: space-between;
 }
 
 .ad2 {
   margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 </style>

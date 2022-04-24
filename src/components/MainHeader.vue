@@ -3,7 +3,7 @@
     <div class="container">
       <nav class="top__navigation">
         <router-link to="/">
-          <h3 class="logo">BuyIt</h3>
+          <h3 class="logo">Buy-It</h3>
         </router-link>
 
         <div class="nav__links">
@@ -15,6 +15,12 @@
           <router-link to="/cart">
             <i class="fal fa-shopping-bag"></i>
           </router-link>
+        </div>
+        <div class="mobile-menu">
+          <router-link to="/cart">
+            <i class="fal fa-shopping-bag"></i>
+          </router-link>
+          <i class="fas fa-bars"></i>
         </div>
       </nav>
     </div>
@@ -95,5 +101,23 @@ a.active__page,
 
 .nav__links a.router-link-exact-active::after {
   width: 70%;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  .mobile-menu {
+    display: flex;
+    font-size: 1.6rem;
+  }
+  .mobile-menu i {
+    padding-inline: 10px;
+    cursor: pointer;
+  }
+  .nav__links {
+    display: none;
+  }
 }
 </style>

@@ -1,16 +1,22 @@
 <template>
   <main-header />
   <router-view />
+  <news-letter />
+  <main-footer />
 </template>
 
 <script>
 // @ is an alias to /src
 import MainHeader from "@/components/MainHeader.vue";
+import NewsLetter from "@/components/NewsLetter.vue";
+import MainFooter from "@/components/MainFooter.vue";
 
 export default {
   name: "HomeView",
   components: {
-    "main-header": MainHeader,
+    MainHeader,
+    NewsLetter,
+    MainFooter,
   },
 };
 </script>
@@ -67,6 +73,7 @@ button {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.25s, color 0.25s;
+  border: none;
 }
 
 h1 {
