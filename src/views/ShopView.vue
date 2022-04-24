@@ -1,9 +1,7 @@
 <template>
-  <section class="about">
+  <section>
     <div class="container">
-      <h3>This is an about page</h3>
+      <h3>Shop Page</h3>
     </div>
   </section>
 </template>
-
-

@@ -16,6 +16,26 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/shop",
+    name: "shop",
+    component: () => import("../views/ShopView.vue"),
+  },
+  {
+    path: "/blog",
+    name: "blog",
+    component: () => import("../views/BlogView.vue"),
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    component: () => import("../views/ContactView.vue"),
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: () => import("../views/CartView.vue"),
+  },
 ];
 
 const router = createRouter({
