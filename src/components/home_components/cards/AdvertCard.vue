@@ -60,4 +60,18 @@ article:hover button {
   color: black;
   border-radius: 0px;
 }
+
+@media (max-width: 799px) {
+  article {
+    min-width: 30%;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 670px) {
+  article {
+    width: 100%;
+    height: 350px;
+  }
+}
 </style>

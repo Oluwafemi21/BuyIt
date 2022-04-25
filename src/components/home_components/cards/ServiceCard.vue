@@ -46,4 +46,15 @@ export default {
 .service__card h6:hover {
   opacity: 0.85;
 }
+
+@media (max-width: 387px) {
+  .service__card {
+    width: 70%;
+    text-align: center;
+  }
+
+  .service__card .image {
+    margin-inline: auto;
+  }
+}
 </style>

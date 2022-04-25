@@ -24,6 +24,7 @@ export default {
 <style>
 /* Default Styles */
 @import url("https://fonts.googleapis.com/css?family=League+Spartan:100,200,300,regular,500,600,700,800,900");
+
 :root {
   /* Primary Colors */
   --text: #222;

@@ -10,8 +10,8 @@
           </p>
         </div>
         <form>
-          <input type="email" placeholder="Your email address" />
-          <button>Sign Up</button>
+          <input type="email" placeholder="Enter your email" />
+          <button>Subscribe</button>
         </form>
       </div>
     </div>
@@ -38,6 +38,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .newsletter-container p span {
@@ -68,5 +70,17 @@ form button {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   font-weight: 500;
+}
+
+@media (max-width: 799px) {
+  .newsletter {
+    text-align: center;
+  }
+  .newsletter-container {
+    justify-content: center;
+  }
+  form {
+    width: 100%;
+  }
 }
 </style>

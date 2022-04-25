@@ -60,4 +60,12 @@ export default {
   margin-top: 3rem;
   gap: 2rem;
 }
+
+@media (max-width: 670px) {
+  .ad1,
+  .ad2 {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
 </style>

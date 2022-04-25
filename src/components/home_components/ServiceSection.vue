@@ -5,7 +5,6 @@
     <service-card name="Smart Saving" />
     <service-card name="Promotions" />
     <service-card name="24/7 Support" />
-    <service-card name="Reliable" />
     <service-card name="Free Shipping" />
   </section>
 </template>
@@ -24,7 +23,8 @@ export default {
 .services {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 25px;
 }
 </style>

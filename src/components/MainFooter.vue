@@ -8,8 +8,7 @@
           </router-link>
           <h4>Contact</h4>
           <span>
-            <strong>Address: </strong>562 Wellington Road, Street 32, San
-            Francisco
+            <strong>Address: </strong>562 Wellington Road, San Francisco
           </span>
           <span><strong>Phone: </strong>+01-2222-365/+01-2343-563</span>
           <span><strong>Hours: </strong>8:00 - 20:00, Mon - Sat</span>
@@ -38,14 +37,31 @@
           <a href="#">Track My Order</a>
           <a href="#">Help</a>
         </div>
-        <div class="footer-col">
+        <div class="footer-col install">
           <h4>Install App</h4>
           <p>From App Store or Google Play</p>
           <div class="apps">
-            <button>Download on the <br /><strong>App Store</strong></button>
-            <button>Google Play</button>
+            <a href="/" class="download-btn">
+              <i class="fab fa-apple"></i>
+              <div class="btn-text">
+                <p>Download on <span>Apple Store</span></p>
+              </div>
+            </a>
+            <a href="/" class="download-btn">
+              <i class="fab fa-google-play"></i>
+              <div class="btn-text">
+                <p>Download on <span>Google Play</span></p>
+              </div>
+            </a>
           </div>
           <p>Secured Payment Gateways</p>
+          <div class="payment-methods">
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-paypal"></i>
+            <i class="fab fa-amazon-pay"></i>
+            <i class="fab fa-cc-google-pay"></i>
+          </div>
         </div>
         <p class="copyright">
           Buy-It. &copy; 2022. Built by Fexavier with <span>Vue</span>
@@ -68,6 +84,7 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   padding-block: 4rem;
+  gap: 1.5rem;
 }
 
 .footer .logo {
@@ -102,6 +119,10 @@ strong {
   color: black;
 }
 
+.social-links a {
+  padding-right: 1.4rem;
+}
+
 .copyright {
   font-size: 1.7rem;
   width: 100%;
@@ -110,6 +131,53 @@ strong {
 
 .copyright span {
   font-weight: 700;
+  color: #42b883;
+}
+
+.install p {
+  padding-block: 0;
+}
+
+.apps {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border: 2px solid #42b883;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.download-btn i {
+  font-size: 2rem;
+}
+
+.apps a:hover {
+  background-color: #42b883;
+  color: white;
+}
+
+.apps a:hover p {
+  color: white;
+}
+
+.payment-methods {
+  font-size: 2rem;
+}
+.payment-methods i {
+  padding-right: 1.5rem;
+  color: black;
+}
+
+.payment-methods i:hover {
+  cursor: pointer;
   color: #42b883;
 }
 </style>
