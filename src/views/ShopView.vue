@@ -1,7 +1,116 @@
 <template>
-  <section>
-    <div class="container">
-      <h3>Shop Page</h3>
+  <sub-header
+    heading="#stayhome"
+    subHeading="Save more with coupons up to 70% off"
+  />
+  <div class="container">
+    <div class="product__container">
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="4"
+      />
+      <product-card
+        brand="addidas"
+        productName="Classic White Sneakers"
+        price="$78"
+        :ratings="5"
+      />
     </div>
-  </section>
+  </div>
 </template>
+
+
+<script>
+import SubHeader from "@/components/SubHeader.vue";
+import ProductCard from "@/components/home_components/cards/ProductCard.vue";
+export default {
+  components: { SubHeader, ProductCard },
+  name: "ShopView",
+};
+</script>

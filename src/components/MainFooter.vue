@@ -1,11 +1,11 @@
 <template>
   <footer>
     <div class="container">
+      <router-link to="/">
+        <h3 class="logo">Buy-It</h3>
+      </router-link>
       <div class="footer">
         <div class="footer-col">
-          <router-link to="/">
-            <h3 class="logo">Buy-It</h3>
-          </router-link>
           <h4>Contact</h4>
           <span>
             <strong>Address: </strong>562 Wellington Road, San Francisco
@@ -87,8 +87,8 @@ export default {
   gap: 1.5rem;
 }
 
-.footer .logo {
-  padding-bottom: 2rem;
+.logo {
+  padding-top: 2rem;
 }
 
 .footer-col {

@@ -1,8 +1,16 @@
 <template>
-  <section>
-    <div class="container">
-      <h3>Blog page</h3>
-    </div>
-  </section>
+  <sub-header
+    heading="#Blog"
+    subHeading="Read our latest blog posts"
+  />
 </template>
+
+
+<script>
+import SubHeader from "@/components/SubHeader.vue";
+export default {
+  components: { SubHeader },
+  name: "BlogView",
+};
+</script>
 

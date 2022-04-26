@@ -1,9 +1,15 @@
 <template>
-  <section class="about">
-    <div class="container">
-      <h3>This is an about page</h3>
-    </div>
-  </section>
+  <sub-header heading="#WhoWeAre" subHeading="Get to know us" />
 </template>
+
+
+<script>
+import SubHeader from "@/components/SubHeader.vue";
+export default {
+  components: { SubHeader },
+  name: "AboutView",
+};
+</script>
+
 
 

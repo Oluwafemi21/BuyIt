@@ -13,8 +13,8 @@
           <router-link @click="hideNav()" to="/blog">Blog</router-link>
           <router-link @click="hideNav()" to="/about">About</router-link>
           <router-link @click="hideNav()" to="/contact">Contact</router-link>
-          <router-link @click="hideNav()" to="/cart">
-            <i class="fal fa-shopping-bag desktop-cart"></i>
+          <router-link @click="hideNav()" to="/cart" class="desktop-cart">
+            <i class="fal fa-shopping-bag"></i>
           </router-link>
         </div>
         <div class="mobile-menu">
@@ -137,7 +137,8 @@ a.active__page,
 @media (max-width: 799px) {
   .mobile-menu {
     display: flex;
-    font-size: 1.6rem;
+    align-items: center;
+    font-size: 1.9rem;
     gap: 1.5rem;
   }
 
