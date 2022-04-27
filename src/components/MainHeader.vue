@@ -59,7 +59,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .top__navigation {
@@ -174,11 +174,11 @@ a.active__page,
   }
 
   .nav__links a:hover::after {
-    width: 25%;
+    width: 2.5rem;
   }
 
   .nav__links a.router-link-exact-active::after {
-    width: 25%;
+    width: 2.5rem;
   }
 
   .close-btn {

@@ -29,12 +29,14 @@
           <button>Add To Cart</button>
         </div>
         <h4>Product Details</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          eligendi, incidunt libero illum facere dicta porro explicabo
-          temporibus earum labore ullam laboriosam iure voluptate, nostrum
-          impedit velit doloremque, facilis ut quod minima laborum voluptas
-          vitae! Nisi et molestias odit hic!
+        <p class="product-description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+          porro, quis veniam necessitatibus a sed vitae illo omnis culpa
+          similique? Laudantium natus doloremque, aperiam labore, iste minima ad
+          alias nisi saepe pariatur odit laboriosam ab fugiat ea, officia eaque
+          magni. Nulla facere quod iste blanditiis explicabo veniam. Facilis,
+          dolore maiores. Cumque, minima aperiam. Obcaecati minima sit libero,
+          molestias eos ab!
         </p>
       </div>
     </div>
@@ -81,6 +83,7 @@ export default {
   components: {
     ProductCard,
   },
+  methods: {},
 };
 </script>
 
@@ -90,6 +93,7 @@ export default {
   align-items: flex-start;
   justify-content: space-between;
   gap: 5rem;
+  padding-bottom: 2rem;
 }
 
 .image-section {
@@ -124,7 +128,7 @@ export default {
 }
 
 .main-img {
-  height: 60vh;
+  height: 55vh;
   width: 100%;
   background-color: black;
 }
@@ -141,6 +145,7 @@ export default {
   height: 20vh;
   max-width: 100%;
   background-color: black;
+  cursor: pointer;
 }
 
 /* Product Details */
@@ -160,7 +165,6 @@ export default {
 .product-details select {
   max-width: 120px;
   padding: 2px 1rem;
-  outline: none;
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
@@ -191,11 +195,15 @@ input[type="number"] {
 }
 
 .extra {
-  padding-block: 4rem 2rem;
+  padding-block: 4.5rem;
   text-align: center;
 }
 
-@media (max-width: 799px) {
+.product-description {
+  line-height: 2.5rem;
+}
+
+@media (max-width: 599px) {
   .cart-item {
     flex-direction: column;
   }

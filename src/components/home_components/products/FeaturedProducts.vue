@@ -104,7 +104,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 30px;
-  padding-top: 40px;
+  padding-block: 4rem;
 }
 
 @media (max-width: 1200px) {
