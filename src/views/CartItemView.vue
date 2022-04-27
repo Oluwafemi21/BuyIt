@@ -25,7 +25,7 @@
           <option value="S">Small</option>
         </select>
         <div class="add-to-cart">
-          <input type="number" placeholder="QTY" min="1" max="10" />
+          <input type="number" value="1" placeholder="QTY" min="1" max="10" />
           <button>Add To Cart</button>
         </div>
         <h4>Product Details</h4>
@@ -93,7 +93,7 @@ export default {
 }
 
 .image-section {
-  width: 40%;
+  width: 47%;
 }
 
 .image-section,
@@ -124,7 +124,7 @@ export default {
 }
 
 .main-img {
-  height: 45vh;
+  height: 60vh;
   width: 100%;
   background-color: black;
 }
@@ -138,7 +138,7 @@ export default {
 }
 
 .img-thumbnails .img {
-  height: 16vh;
+  height: 20vh;
   max-width: 100%;
   background-color: black;
 }
@@ -161,12 +161,8 @@ export default {
   max-width: 120px;
   padding: 2px 1rem;
   outline: none;
-  border: 1px solid green;
   margin-bottom: 2rem;
   font-size: 1.5rem;
-}
-
-.add-to-cart {
 }
 
 .add-to-cart input {
@@ -174,7 +170,7 @@ export default {
   font-size: 1.6rem;
   padding: 0.5rem;
   outline: none;
-  border: 1px solid green;
+  width: 4.5rem;
 }
 
 .add-to-cart button {
@@ -195,7 +191,7 @@ input[type="number"] {
 }
 
 .extra {
-  padding-block: 2rem;
+  padding-block: 4rem 2rem;
   text-align: center;
 }
 
