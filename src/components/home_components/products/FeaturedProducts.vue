@@ -49,7 +49,7 @@
         brand="addidas"
         productName="Classic White Sneakers"
         price="$78"
-        :ratings="5"
+        :ratings="4"
       />
     </div>
   </section>
@@ -117,7 +117,7 @@ export default {
 
 @media (max-width: 599px) {
   .product__container {
-    grid-template-columns: 75%;
+    grid-template-columns: 80%;
     justify-content: center;
   }
 }

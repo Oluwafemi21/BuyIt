@@ -8,9 +8,9 @@
     </div>
     <div class="price">
       <span>{{ price }}</span>
-      <div class="cart">
+      <router-link to="/cartitem" class="cart">
         <i class="fal fa-shopping-cart"></i>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
