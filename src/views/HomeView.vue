@@ -14,8 +14,8 @@
   </section>
 
   <section class="feature__section">
+    <service-section />
     <div class="container">
-      <service-section />
       <featured-products />
     </div>
   </section>

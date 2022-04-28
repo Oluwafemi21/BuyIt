@@ -1,15 +1,97 @@
 <template>
   <sub-header heading="#WhoWeAre" subHeading="Get to know us" />
+  <div class="container">
+    <article>
+      <div class="about-img"></div>
+      <div class="about-text">
+        <h1>Who We Are ?</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti
+          amet iusto a esse eveniet nulla reiciendis blanditiis dolor molestias.
+          Quibusdam alias consectetur id possimus ullam rerum soluta dolorem
+          sit, veritatis, ipsam, dolores maiores perspiciatis nam explicabo!
+          Labore repellendus dolore ab dicta, sapiente dignissimos quam libero
+          dolorum deleniti esse recusandae consequuntur distinctio unde optio
+          soluta, autem repudiandae! Hic id eaque nihil!
+        </p>
+      </div>
+    </article>
+    <div class="video-section">
+      <h1>Download Our <a href="/">App</a></h1>
+      <div class="video-banner"></div>
+    </div>
+  </div>
+  <service-section />
 </template>
 
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
+import ServiceSection from "@/components/home_components/ServiceSection.vue";
 export default {
-  components: { SubHeader },
+  components: { SubHeader, ServiceSection },
   name: "AboutView",
 };
 </script>
+
+<style scoped>
+article {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 2.5rem;
+}
+.about-img {
+  height: 50vh;
+  width: 50%;
+  background-color: black;
+}
+
+.about-text {
+  width: 50%;
+}
+
+.about-text p {
+  line-height: 25px;
+}
+
+.video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 3rem;
+  text-align: center;
+}
+
+.video-banner {
+  height: 60vh;
+  background-color: black;
+  width: 60%;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+@media (max-width: 499px) {
+  article {
+    flex-direction: column;
+  }
+  .about-img,
+  .about-text,
+  .video-banner {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .video-section a {
+    text-decoration: underline;
+    color: blue;
+  }
+}
+</style>
 
 
 

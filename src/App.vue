@@ -53,6 +53,7 @@ html {
 body {
   color: black;
   width: 100%;
+  overflow-x: hidden;
 }
 
 section {

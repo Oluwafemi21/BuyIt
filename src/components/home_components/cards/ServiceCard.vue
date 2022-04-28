@@ -16,6 +16,7 @@ export default {
 
 <style scoped>
 .service__card {
+  text-align: center;
   border-radius: 5px;
   border: 1px solid black;
   padding: 10px 25px;
@@ -36,6 +37,7 @@ export default {
 }
 
 .service__card h6 {
+  display: inline-block;
   padding: 6px 12px;
   font-weight: 600;
   color: white;

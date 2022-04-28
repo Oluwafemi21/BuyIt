@@ -27,4 +27,12 @@ export default {
   flex-wrap: wrap;
   gap: 25px;
 }
+
+@media (max-width: 399px) {
+  .services {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    min-width: 100%;
+  }
+}
 </style>

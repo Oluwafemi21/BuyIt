@@ -27,7 +27,6 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 5rem;
   padding-block: 4.5rem;
 }
