@@ -39,4 +39,10 @@ h2 {
   font-size: 1.8rem;
   color: black;
 }
+
+@media (max-width: 599px) {
+  h2 {
+    font-size: 2.8rem;
+  }
+}
 </style>

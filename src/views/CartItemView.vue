@@ -26,7 +26,7 @@
         </select>
         <div class="add-to-cart">
           <input type="number" value="1" placeholder="QTY" min="1" max="10" />
-          <button>Add To Cart</button>
+          <action-button btnvalue="Add To Cart" />
         </div>
         <h4>Product Details</h4>
         <p class="product-description">
@@ -77,11 +77,13 @@
 
 <script>
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
+import ActionButton from "@/components/ActionButton.vue";
 
 export default {
   name: "CartItemView",
   components: {
     ProductCard,
+    ActionButton,
   },
   methods: {},
 };
@@ -122,8 +124,7 @@ export default {
   transition: opacity 0.25s;
 }
 
-.image-section a:hover,
-.add-to-cart button:hover {
+.image-section a:hover {
   opacity: 0.85;
 }
 
@@ -164,34 +165,10 @@ export default {
 
 .product-details select {
   max-width: 120px;
-  padding: 2px 1rem;
+  padding: 0.8rem 1rem;
   margin-bottom: 2rem;
   font-size: 1.5rem;
-}
-
-.add-to-cart input {
-  margin-right: 1rem;
-  font-size: 1.6rem;
-  padding: 0.5rem;
-  outline: none;
-  width: 4.5rem;
-}
-
-.add-to-cart button {
-  padding: 1rem 2rem;
-  font-weight: 600;
-  color: white;
-  background-color: black;
-}
-
-.product-details input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
+  cursor: pointer;
 }
 
 .extra {

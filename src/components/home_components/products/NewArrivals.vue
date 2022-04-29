@@ -7,49 +7,49 @@
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="4"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="5"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="4"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="5"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="4"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="5"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="4"
         />
         <product-card
           brand="addidas"
           productName="Classic White Sneakers"
-          price="$78"
+          price="78.00"
           :ratings="5"
         />
       </div>

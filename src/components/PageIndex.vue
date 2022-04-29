@@ -1,13 +1,17 @@
 <template>
   <div class="pagination">
-    <a href="#page1">1</a>
-    <a href="#page2">2</a>
-    <a href="#page3"><i class="fal fa-long-arrow-alt-right"></i></a>
+    <action-button btnvalue="1" />
+    <action-button btnvalue="2" />
+    <action-button>
+      <i class="fal fa-long-arrow-alt-right"></i>
+    </action-button>
   </div>
 </template>
 
 <script>
+import ActionButton from "./ActionButton.vue";
 export default {
+  components: { ActionButton },
   name: "PageIndex",
 };
 </script>
@@ -23,18 +27,8 @@ export default {
   gap: 1rem;
 }
 
-.pagination a {
-  padding: 1rem 1.8rem;
-  font-size: 1.8rem;
-  border: none;
-  border-radius: 6px;
-  color: white;
+.pagination button {
   font-weight: 600;
-  background-color: black;
-  transition: opacity 0.25s;
-}
-
-.pagination a:hover {
-  opacity: 0.85;
+  height: 43px;
 }
 </style>

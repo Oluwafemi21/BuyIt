@@ -111,4 +111,20 @@ p {
 ul {
   list-style-type: none;
 }
+
+input,
+textarea {
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  resize: none;
+  padding: 12px;
+  font-size: 1.6rem;
+}
+
+input[type="number"] {
+  margin-right: 1rem;
+  padding: 1rem 0 1rem 1rem;
+  outline: none;
+  width: 5rem;
+}
 </style>

@@ -28,7 +28,7 @@ export default {
 }
 
 .services h1 {
-  margin-bottom: 2rem;
+  margin-block: 2rem;
 }
 
 .service-container {
@@ -42,9 +42,10 @@ export default {
 
 @media (max-width: 399px) {
   .service-container {
-    padding-block: 2rem;
+    padding: 2rem;
     flex-wrap: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
+    justify-content: initial;
   }
 }
 </style>

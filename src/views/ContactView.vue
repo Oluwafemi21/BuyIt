@@ -63,7 +63,7 @@
             placeholder="Your Message"
           ></textarea>
         </div>
-        <button>Submit</button>
+        <action-button btnvalue="Submit" />
       </form>
       <div class="employers-section">
         <div class="employer">
@@ -101,8 +101,9 @@
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
+import ActionButton from "@/components/ActionButton.vue";
 export default {
-  components: { SubHeader },
+  components: { SubHeader, ActionButton },
   name: "ContactView",
 };
 </script>
@@ -133,6 +134,7 @@ span {
 
 .map-details h4 {
   font-size: 1.6rem;
+  padding-bottom: 1rem;
 }
 
 li {
@@ -179,22 +181,13 @@ form h3 {
 input,
 textarea {
   width: 100%;
-  padding: 12px;
   border: 1px solid lightgrey;
-  font-size: 1.6rem;
-  border-radius: 5px;
-  resize: none;
 }
 
-button {
-  padding: 1rem 2rem;
-  font-weight: 600;
-  color: white;
-  background-color: black;
-}
-
-button:hover {
-  opacity: 0.85;
+input:hover,
+textarea:hover {
+  outline: none;
+  border: 1px solid black;
 }
 
 /* Employers section */

@@ -7,14 +7,13 @@
         <h1>On all products</h1>
         <p>Save more with coupons & get up to 70% off!</p>
         <router-link to="/shop">
-          <button>Shop Now</button>
+          <action-button btnvalue="Shop Now" />
         </router-link>
       </div>
     </div>
   </section>
-
+  <service-section />
   <section class="feature__section">
-    <service-section />
     <div class="container">
       <featured-products />
     </div>
@@ -32,6 +31,7 @@ import BannerSection from "@/components/home_components/BannerSection.vue";
 import NewArrivals from "@/components/home_components/products/NewArrivals.vue";
 import AdvertSection from "@/components/home_components/AdvertSection.vue";
 import FeaturedProducts from "@/components/home_components/products/FeaturedProducts.vue";
+import ActionButton from "@/components/ActionButton.vue";
 
 export default {
   name: "HomeView",
@@ -41,6 +41,7 @@ export default {
     NewArrivals,
     AdvertSection,
     FeaturedProducts,
+    ActionButton,
   },
 };
 </script>
@@ -63,25 +64,15 @@ export default {
 }
 
 .hero__text h4 {
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
 }
 
 .hero__text h1 {
   color: black;
 }
 
-button {
-  background-color: black;
-  padding: 10px 20px;
-  border: 2px solid black;
-  font-size: 1.7rem;
-  color: var(--white);
-  margin-top: 15px;
-}
-
-button:hover {
-  background-color: white;
-  color: black;
+.hero__text p {
+  margin-bottom: 1rem;
 }
 
 /* Services and Features */

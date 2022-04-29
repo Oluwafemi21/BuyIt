@@ -36,7 +36,7 @@ export default {
   z-index: 2;
   color: rgba(0, 0, 0, 0.4);
   left: 0;
-  top: 0;
+  top: 0.8rem;
   font-size: 6.5rem;
 }
 

@@ -7,7 +7,7 @@
       <i v-for="rating in ratings" :key="rating" class="fas fa-star"></i>
     </div>
     <div class="price">
-      <span>{{ price }}</span>
+      <span>${{ price }}</span>
       <router-link to="/cartitem" class="cart">
         <i class="fal fa-shopping-cart"></i>
       </router-link>
@@ -22,7 +22,7 @@ export default {
     image_url: String,
     brand: String,
     productName: String,
-    price: String,
+    price: Number,
     ratings: {
       type: Number,
     },
