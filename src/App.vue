@@ -53,7 +53,6 @@ html {
 body {
   color: black;
   width: 100%;
-  overflow-x: hidden;
 }
 
 section {
@@ -107,5 +106,9 @@ p {
   color: #9f9f92;
   font-weight: 400;
   padding-block: 1rem;
+}
+
+ul {
+  list-style-type: none;
 }
 </style>

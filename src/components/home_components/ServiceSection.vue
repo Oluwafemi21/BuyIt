@@ -1,11 +1,14 @@
 <template>
   <section class="services">
-    <service-card name="Free Shipping" />
-    <service-card name="Easy Order" />
-    <service-card name="Smart Saving" />
-    <service-card name="Promotions" />
-    <service-card name="24/7 Support" />
-    <service-card name="Free Shipping" />
+    <h1>Services</h1>
+    <div class="service-container">
+      <service-card name="Free Shipping" />
+      <service-card name="Easy Order" />
+      <service-card name="Smart Saving" />
+      <service-card name="Promotions" />
+      <service-card name="24/7 Support" />
+      <service-card name="Free Shipping" />
+    </div>
   </section>
 </template>
 
@@ -21,6 +24,15 @@ export default {
 
 <style scoped>
 .services {
+  text-align: center;
+}
+
+.services h1 {
+  margin-bottom: 2rem;
+}
+
+.service-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,10 +41,10 @@ export default {
 }
 
 @media (max-width: 399px) {
-  .services {
+  .service-container {
+    padding-block: 2rem;
     flex-wrap: nowrap;
     overflow-x: scroll;
-    min-width: 100%;
   }
 }
 </style>

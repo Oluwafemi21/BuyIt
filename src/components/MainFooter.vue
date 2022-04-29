@@ -180,4 +180,20 @@ strong {
   cursor: pointer;
   color: #42b883;
 }
+
+@media (max-width: 399px) {
+  .download-btn p {
+    font-size: 1.4rem;
+  }
+  .download-btn span {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 345px) {
+  .apps {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>

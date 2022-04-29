@@ -75,7 +75,7 @@ header {
 }
 
 .nav__links a {
-  padding-inline: 10px;
+  padding-inline: 15px;
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text);
