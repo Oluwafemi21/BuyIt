@@ -29,7 +29,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: var(--dim-blue);
   color: white;
   min-height: 27vh;
 }
@@ -70,9 +70,15 @@ form button {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   font-weight: 500;
+  color: white;
+  background-color: var(--dark-green);
 }
 
-@media (max-width: 799px) {
+form button:hover {
+  background-color: var(--grey);
+}
+
+@media (max-width: 999px) {
   .newsletter {
     text-align: center;
   }

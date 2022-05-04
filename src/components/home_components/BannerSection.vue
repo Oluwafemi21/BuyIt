@@ -20,7 +20,7 @@ export default {
 .banner {
   text-align: center;
   min-height: 25vh;
-  background-color: black;
+  background-color: var(--dim-blue);
   color: white;
   display: grid;
   place-items: center;
@@ -35,9 +35,14 @@ h2 {
   padding: 14px 30px;
   letter-spacing: 0.5px;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid white;
   font-size: 1.8rem;
-  color: black;
+  color: var(--dim-blue);
+}
+
+.banner button:hover {
+  background-color: var(--dim-blue);
+  color: white;
 }
 
 @media (max-width: 599px) {

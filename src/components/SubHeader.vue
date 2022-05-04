@@ -17,12 +17,17 @@ export default {
 
 <style scoped>
 .sub-heading {
-  background-color: black;
+  background-color: var(--dim-blue);
   color: white;
   height: 30vh;
   display: grid;
   place-content: center;
   text-align: center;
   margin-bottom: 2.5rem;
+}
+
+.sub-heading p {
+  font-size: 1.9rem;
+  color: var(--grey);
 }
 </style>

@@ -68,52 +68,10 @@ export default {
 }
 
 .hero__text h1 {
-  color: black;
+  color: var(--dim-blue);
 }
 
 .hero__text p {
   margin-bottom: 1rem;
-}
-
-/* Services and Features */
-.products {
-  text-align: center;
-}
-
-.products h1 {
-  display: inline-block;
-}
-
-.products h1::after {
-  content: "";
-  display: block;
-  position: relative;
-  margin-inline: auto;
-  top: 2px;
-  height: 3px;
-  left: 0;
-  width: 0;
-  background-color: black;
-  border-radius: 6px;
-  animation: play 2s infinite ease-in-out;
-}
-
-@keyframes play {
-  from {
-    width: 0;
-  }
-  50% {
-    width: 100%;
-  }
-  to {
-    width: 0;
-  }
-}
-
-.product__container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 30px;
-  padding-top: 40px;
 }
 </style>

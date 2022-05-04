@@ -69,16 +69,16 @@ header {
 }
 
 .logo {
-  color: var(--blue);
+  color: var(--dim-blue);
   font-weight: 700;
   letter-spacing: 2px;
 }
 
 .nav__links a {
   padding-inline: 15px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--dark-blue);
   transition: all 0.25s ease-in-out;
   line-height: 2rem;
 }
@@ -86,7 +86,7 @@ header {
 a.active__page,
 .nav__links a:hover,
 .mobile-menu a:hover {
-  color: black;
+  color: var(--dark-blue);
 }
 
 .nav__links {
@@ -104,7 +104,7 @@ a.active__page,
   height: 2px;
   left: 0;
   width: 0;
-  background-color: black;
+  background-color: var(--dark-blue);
   border-radius: 6px;
   transition: width 0.25s ease;
 }
@@ -144,7 +144,7 @@ a.active__page,
 
   .mobile-menu i {
     cursor: pointer;
-    color: black;
+    color: var(--text);
   }
 
   .nav__links {

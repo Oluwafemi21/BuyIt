@@ -108,7 +108,7 @@ export default {
 }
 
 .footer-col a:hover {
-  color: #42b883;
+  color: var(--dark-green);
 }
 
 .footer-col span {
@@ -116,7 +116,7 @@ export default {
   font-size: 1.6rem;
 }
 strong {
-  color: black;
+  color: var(--text);
 }
 
 .social-links a {
@@ -131,7 +131,7 @@ strong {
 
 .copyright span {
   font-weight: 700;
-  color: #42b883;
+  color: var(--dark-green);
 }
 
 .install p {
@@ -149,7 +149,7 @@ strong {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  border: 2px solid #42b883;
+  border: 2px solid var(--dark-green);
   border-radius: 6px;
   padding: 8px;
   text-align: center;
@@ -160,7 +160,7 @@ strong {
 }
 
 .apps a:hover {
-  background-color: #42b883;
+  background-color: var(--dark-green);
   color: white;
 }
 
@@ -178,7 +178,7 @@ strong {
 
 .payment-methods i:hover {
   cursor: pointer;
-  color: #42b883;
+  color: var(--dark-green);
 }
 
 @media (max-width: 399px) {

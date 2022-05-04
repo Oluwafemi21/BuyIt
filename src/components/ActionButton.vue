@@ -17,15 +17,15 @@ export default {
 <style scoped>
 button {
   border: none;
-  background-color: black;
+  background-color: var(--dim-blue);
   padding: 10px 20px;
-  border: 2px solid black;
+  border: 2px solid var(--dim-blue);
   font-size: 1.7rem;
   color: white;
 }
 
 button:hover {
   background-color: white;
-  color: black;
+  color: var(--dim-blue);
 }
 </style>

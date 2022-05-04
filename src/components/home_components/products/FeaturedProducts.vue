@@ -83,7 +83,7 @@ export default {
   height: 3px;
   left: 0;
   width: 0;
-  background-color: black;
+  background-color: var(--text);
   border-radius: 6px;
   animation: play 2s infinite ease-in-out;
 }
@@ -102,22 +102,19 @@ export default {
 
 .product__container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   padding-block: 4rem;
 }
 
 @media (max-width: 1200px) {
   .product__container {
-    grid-template-columns: repeat(2, 40%);
-    margin-inline: auto;
     justify-content: center;
   }
 }
 
 @media (max-width: 599px) {
   .product__container {
-    grid-template-columns: 80%;
     justify-content: center;
   }
 }

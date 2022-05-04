@@ -27,15 +27,14 @@ export default {
 
 :root {
   /* Primary Colors */
-  --text: #222;
-  --blue: #202c59;
-  --brown: #581f18;
-  --dark-green: #348c41;
-  --light-green: #2ba84a;
-  --green: #04f06a;
-  --white: #fcfffc;
-  --red: #f24333;
+  --text: #4e4537;
+  --brown: #926c00;
+  --grey: #98b0a8;
+  --dim-blue: #025661;
+  --dark-blue: #2f4858;
+  --dark-green: #008765;
   --bg: #f0eff4;
+  --purple: #845ec2;
 }
 
 * {
@@ -51,7 +50,7 @@ html {
 }
 
 body {
-  color: black;
+  color: var(--text);
   width: 100%;
 }
 

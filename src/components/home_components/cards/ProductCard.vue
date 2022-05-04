@@ -32,20 +32,21 @@ export default {
 
 <style scoped>
 .product__card {
-  border: 1px solid black;
+  border: 1px solid var(--grey);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.05s ease-in;
   padding: 15px;
   text-align: left;
   cursor: pointer;
   border-radius: 15px;
+  color: #222;
 }
 
 .product__image {
   height: 200px;
   width: auto;
   border-radius: 5px;
-  background-color: black;
+  background-color: var(--dim-blue);
 }
 
 .product__name {
@@ -60,6 +61,7 @@ export default {
 
 .rating {
   padding-bottom: 5px;
+  color: gold;
 }
 
 .rating i {
@@ -79,9 +81,9 @@ export default {
 
 .cart {
   height: 35px;
-  line-height: 35px;
+  line-height: 40px;
   width: 35px;
-  background-color: black;
+  background-color: var(--dark-green);
   border-radius: 50%;
   font-size: 1.5rem;
   text-align: center;

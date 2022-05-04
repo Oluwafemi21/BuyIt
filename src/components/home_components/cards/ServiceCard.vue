@@ -1,6 +1,6 @@
 <template>
   <div class="service__card">
-    <div class="image"></div>
+    <slot></slot>
     <h6>{{ name }}</h6>
   </div>
 </template>
@@ -16,9 +16,11 @@ export default {
 
 <style scoped>
 .service__card {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid var(--grey);
   padding: 10px 25px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.05s ease-in;
@@ -28,21 +30,33 @@ export default {
   transform: scale(1.02);
 }
 
-.service__card .image {
-  height: 100px;
-  background-color: black;
-  width: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
 .service__card h6 {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 12px;
   font-weight: 600;
   color: white;
   background-color: black;
   border-radius: 5px;
+}
+
+.service__card:nth-child(1) h6 {
+  background-color: #f9a826;
+}
+.service__card:nth-child(2) h6 {
+  background-color: #00bfa6;
+}
+.service__card:nth-child(3) h6 {
+  background-color: #008765;
+}
+.service__card:nth-child(4) h6 {
+  background-color: #24d0d2;
+}
+.service__card:nth-child(5) h6 {
+  background-color: #c626f9;
+}
+
+.service__card:nth-child(6) h6 {
+  background-color: #2c0000;
 }
 
 .service__card h6:hover {

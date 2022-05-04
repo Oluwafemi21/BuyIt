@@ -18,7 +18,7 @@
     </article>
     <div class="video-section">
       <h1>Download Our <a href="/">App</a></h1>
-      <div class="video-banner"></div>
+      <img src="@/assets/images/download.svg" alt="" class="video-banner" />
     </div>
   </div>
   <service-section />
@@ -66,10 +66,14 @@ article {
 
 .video-banner {
   height: 60vh;
-  background-color: black;
   width: 60%;
   border-radius: 10px;
   margin-top: 2rem;
+}
+
+.video-section a {
+  text-decoration: underline;
+  color: var(--dark-blue);
 }
 
 @media (max-width: 499px) {
@@ -84,11 +88,6 @@ article {
 
   h1 {
     font-size: 4rem;
-  }
-
-  .video-section a {
-    text-decoration: underline;
-    color: blue;
   }
 }
 </style>
