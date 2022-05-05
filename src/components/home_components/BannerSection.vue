@@ -20,7 +20,8 @@ export default {
 .banner {
   text-align: center;
   min-height: 25vh;
-  background-color: var(--dim-blue);
+  background-image: url("@/assets/images/banner/b2.jpg");
+  background-size: cover;
   color: white;
   display: grid;
   place-items: center;
@@ -37,11 +38,11 @@ h2 {
   background-color: white;
   border: 2px solid white;
   font-size: 1.8rem;
-  color: var(--dim-blue);
+  color: #060f1e;
 }
 
 .banner button:hover {
-  background-color: var(--dim-blue);
+  background-color: transparent;
   color: white;
 }
 

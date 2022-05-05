@@ -25,7 +25,7 @@ button {
 }
 
 button:hover {
-  background-color: white;
+  background-color: transparent;
   color: var(--dim-blue);
 }
 </style>

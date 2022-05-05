@@ -41,7 +41,7 @@ export default {
 }
 
 .services h1 {
-  margin-block: 2rem;
+  margin-bottom: 2rem;
 }
 
 .service-container {

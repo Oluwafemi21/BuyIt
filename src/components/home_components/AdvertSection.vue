@@ -6,32 +6,32 @@
           advertText="These are the best fits for the summer season"
           advertTitle="spring/summer"
           buttonText="Learn More"
-          color="black"
+          backgroundImage="first"
         />
         <advert-card
           advertText="The new warm and cozy winter collection"
           advertTitle="winter"
           buttonText="Collections"
-          color="black"
+          backgroundImage="second"
         />
       </div>
       <div class="ad2">
         <advert-card
           advertText="These are the best fits for the summer season"
           advertTitle="spring/summer"
-          color="black"
+          backgroundImage="third"
           :haveButton="false"
         />
         <advert-card
           advertText="These are the best fits for the summer season"
           advertTitle="spring/summer"
-          color="black"
+          backgroundImage="fourth"
           :haveButton="false"
         />
         <advert-card
           advertText="These are the best fits for the summer season"
           advertTitle="spring/summer"
-          color="black"
+          backgroundImage="fifth"
           :haveButton="false"
         />
       </div>

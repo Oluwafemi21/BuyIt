@@ -53,7 +53,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header {
-  background-color: white;
+  background-color: lavender;
   box-shadow: 0 1px 10px 3px rgba(0, 0, 0, 0.03);
   padding-block: 10px;
   position: sticky;

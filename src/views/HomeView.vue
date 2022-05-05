@@ -52,8 +52,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 120px);
-  /* background-color:; */
+  height: calc(100vh - 65px);
+  background-image: url("@/assets/images/hero4.png");
+  background-position: 60% 30%;
+  background-size: cover;
 }
 
 .hero__text {

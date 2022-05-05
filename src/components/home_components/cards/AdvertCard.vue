@@ -1,5 +1,5 @@
 <template>
-  <article :style="backgroundColor">
+  <article :class="backgroundImage">
     <h4>{{ advertTitle }}</h4>
     <p>{{ advertText }}</p>
     <button v-if="haveButton">{{ buttonText }}</button>
@@ -13,15 +13,10 @@ export default {
     advertTitle: String,
     advertText: String,
     buttonText: String,
-    color: String,
+    backgroundImage: String,
     haveButton: {
       type: Boolean,
       default: true,
-    },
-  },
-  computed: {
-    backgroundColor() {
-      return `background-color: ${this.color};`;
     },
   },
 };
@@ -29,6 +24,7 @@ export default {
 
 <style scoped>
 article {
+  background-size: cover;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -39,8 +35,26 @@ article {
   min-height: 40vh;
 }
 
+.first {
+  background-image: url("@/assets/images/banner/b17.jpg");
+}
+.second {
+  background-image: url("@/assets/images/banner/b10.jpg");
+}
+.third {
+  background-image: url("@/assets/images/banner/b18.jpg");
+}
+.fourth {
+  background-image: url("@/assets/images/banner/b7.jpg");
+  background-position: 40%;
+}
+.fifth {
+  background-image: url("@/assets/images/banner/b4.jpg");
+  background-position: 40%;
+}
 article p {
   padding-block: 2rem;
+  color: white;
 }
 
 button {
@@ -65,6 +79,9 @@ article:hover button {
   article {
     min-width: 30%;
     min-height: auto;
+  }
+  article {
+    background-position: center center;
   }
 }
 

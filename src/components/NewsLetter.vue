@@ -49,6 +49,8 @@ export default {
 form {
   width: 40%;
   position: relative;
+  margin-inline: auto;
+  display: flex;
 }
 
 form input {
@@ -56,15 +58,13 @@ form input {
   padding: 1.6rem 2rem;
   font-size: 1.6rem;
   border-radius: 6px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   border: none;
   outline: none;
 }
 
 form button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
   padding: 1.5rem 2.6rem;
   font-size: 1.7rem;
   border-top-left-radius: 0px;
