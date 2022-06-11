@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <section class="hero__section">
     <div class="container">
       <div class="hero__text">
@@ -6,8 +7,8 @@
         <h2>Super value deals</h2>
         <h1>On all products</h1>
         <p>Save more with coupons & get up to 70% off!</p>
-        <router-link to="/shop">
-          <action-button btnvalue="Shop Now" />
+        <router-link to="/login">
+          <action-button btnvalue="Start Shopping" />
         </router-link>
       </div>
     </div>
@@ -15,13 +16,15 @@
   <service-section />
   <section class="feature__section">
     <div class="container">
-      <featured-products />
+      <featured-products :featuredProducts="featuredProducts" />
     </div>
   </section>
 
   <banner-section />
-  <new-arrivals />
+  <new-arrivals :newArrivals="newArrivals" />
   <advert-section />
+  <news-letter />
+  <main-footer />
 </template>
 
 
@@ -32,9 +35,114 @@ import NewArrivals from "@/components/home_components/products/NewArrivals.vue";
 import AdvertSection from "@/components/home_components/AdvertSection.vue";
 import FeaturedProducts from "@/components/home_components/products/FeaturedProducts.vue";
 import ActionButton from "@/components/ActionButton.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import NewsLetter from "@/components/NewsLetter.vue";
+import MainFooter from "@/components/MainFooter.vue";
 
 export default {
   name: "HomeView",
+  data() {
+    return {
+      products: [
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 78,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 50,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 45,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 56,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 89,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 43,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 40,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 53,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 68,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 72,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 49,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 65,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 115,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 80,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 60,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 75,
+          ratings: 4,
+        },
+      ],
+    };
+  },
   components: {
     ServiceSection,
     BannerSection,
@@ -42,6 +150,17 @@ export default {
     AdvertSection,
     FeaturedProducts,
     ActionButton,
+    MainHeader,
+    NewsLetter,
+    MainFooter,
+  },
+  computed: {
+    featuredProducts() {
+      return this.products.slice(0, 8);
+    },
+    newArrivals() {
+      return this.products.slice(8, 16);
+    },
   },
 };
 </script>

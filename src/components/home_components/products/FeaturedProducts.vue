@@ -4,52 +4,12 @@
     <p>Lorem ipsum dolor sit amet consectetur.</p>
     <div class="product__container">
       <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="4"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="5"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="4"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="5"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="4"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="5"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="4"
-      />
-      <product-card
-        brand="addidas"
-        productName="Classic White Sneakers"
-        price="78.00"
-        :ratings="4"
+        v-for="(product, index) in featuredProducts"
+        :key="index"
+        :brand="product.brand"
+        :productName="product.productName"
+        :price="product.price"
+        :ratings="product.ratings"
       />
     </div>
   </section>
@@ -62,6 +22,7 @@ export default {
   components: {
     ProductCard,
   },
+  props: ["featuredProducts"],
 };
 </script>
 

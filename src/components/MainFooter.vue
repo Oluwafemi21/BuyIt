@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style scoped>
+footer {
+  border-top: 1px solid var(--brown);
+}
 .footer {
   display: flex;
   align-items: flex-start;
@@ -149,7 +152,7 @@ strong {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  border: 2px solid var(--dark-green);
+  border: 2px solid var(--text);
   border-radius: 6px;
   padding: 8px;
   text-align: center;

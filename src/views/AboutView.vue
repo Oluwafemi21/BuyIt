@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <sub-header heading="#WhoWeAre" subHeading="Get to know us" />
   <div class="container">
     <article>
@@ -22,14 +23,17 @@
     </div>
   </div>
   <service-section />
+  <main-footer />
 </template>
 
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import ServiceSection from "@/components/home_components/ServiceSection.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
 export default {
-  components: { SubHeader, ServiceSection },
+  components: { SubHeader, ServiceSection, MainHeader, MainFooter },
   name: "AboutView",
 };
 </script>

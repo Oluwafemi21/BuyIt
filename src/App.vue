@@ -1,23 +1,12 @@
 <template>
-  <main-header />
   <router-view />
-  <news-letter />
-  <main-footer />
 </template>
 
 <script>
 // @ is an alias to /src
-import MainHeader from "@/components/MainHeader.vue";
-import NewsLetter from "@/components/NewsLetter.vue";
-import MainFooter from "@/components/MainFooter.vue";
 
 export default {
-  name: "HomeView",
-  components: {
-    MainHeader,
-    NewsLetter,
-    MainFooter,
-  },
+  name: "App",
 };
 </script>
 
@@ -118,6 +107,7 @@ textarea {
   resize: none;
   padding: 12px;
   font-size: 1.6rem;
+  outline-offset: 0px;
 }
 
 input[type="number"] {

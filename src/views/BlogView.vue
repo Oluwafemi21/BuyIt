@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <sub-header heading="#Blog" subHeading="Read our latest blog posts" />
   <div class="container">
     <blog-posts
@@ -28,6 +29,7 @@
     />
   </div>
   <page-index />
+  <main-footer />
 </template>
 
 
@@ -35,8 +37,10 @@
 import SubHeader from "@/components/SubHeader.vue";
 import BlogPosts from "@/components/BlogPosts.vue";
 import PageIndex from "@/components/PageIndex.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
 export default {
-  components: { SubHeader, BlogPosts, PageIndex },
+  components: { SubHeader, BlogPosts, PageIndex, MainHeader, MainFooter },
   name: "BlogView",
 };
 </script>

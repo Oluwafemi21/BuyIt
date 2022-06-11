@@ -85,7 +85,109 @@ export default {
     ProductCard,
     ActionButton,
   },
-  methods: {},
+  data() {
+    return {
+      products: [
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 78,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 50,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 45,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 56,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 89,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 43,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 40,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 53,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 68,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 72,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 49,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 65,
+          ratings: 5,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 115,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 80,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 60,
+          ratings: 4,
+        },
+        {
+          brand: "addidas",
+          productName: "Classic White Sneakers",
+          price: 75,
+          ratings: 4,
+        },
+      ],
+    };
+  },
+
 };
 </script>
 

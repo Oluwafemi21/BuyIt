@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <sub-header
     heading="#cart"
     subHeading="Add your coupon code and save up to 70% on all purchases!"
@@ -103,15 +104,19 @@
       </div>
     </div>
   </section>
+  <main-footer />
 </template>
 
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
 export default {
-  components: { SubHeader, ActionButton },
+  components: { SubHeader, ActionButton, MainHeader, MainFooter },
   name: "CartView",
+ 
 };
 </script>
 

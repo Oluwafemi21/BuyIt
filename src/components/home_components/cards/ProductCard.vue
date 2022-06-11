@@ -8,7 +8,7 @@
     </div>
     <div class="price">
       <span>${{ price }}</span>
-      <router-link to="/cartitem" class="cart">
+      <router-link :to="'/cart/' + productName" class="cart">
         <i class="fal fa-shopping-cart"></i>
       </router-link>
     </div>
@@ -85,7 +85,7 @@ export default {
   width: 35px;
   background-color: var(--dark-green);
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
   color: white;
 }

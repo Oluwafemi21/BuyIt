@@ -8,6 +8,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import("../views/LoginBox.vue"),
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
@@ -37,8 +42,8 @@ const routes = [
     component: () => import("../views/CartView.vue"),
   },
   {
-    path: "/cartitem",
-    name: "cartitem",
+    path: '/cart/:id',
+    name: 'cartItem',
     component: () => import("../views/CartItemView.vue"),
   },
 
@@ -47,6 +52,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 });
+
 
 export default router;

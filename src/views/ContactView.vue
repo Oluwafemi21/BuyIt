@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <sub-header
     heading="#stayintouch"
     subHeading="With our 24/7 hotlines we will attend to you."
@@ -66,45 +67,59 @@
         <action-button btnvalue="Submit" />
       </form>
       <div class="employers-section">
-        <div class="employer">
+        <div
+          class="employer"
+          v-for="(employer, index) in employers"
+          :key="index"
+        >
           <div class="employer-img"></div>
           <div class="employer-info">
-            <h4>Mark Franklin</h4>
-            <p>Chief Execution Officer (CEO)</p>
-            <p>Phone: +1-305-984-5462</p>
-            <p>Email: contact@gmail.com</p>
-          </div>
-        </div>
-        <div class="employer">
-          <div class="employer-img"></div>
-          <div class="employer-info">
-            <h4>William Smith</h4>
-            <p>Senior Marketing Manager</p>
-            <p>Phone: +1-305-753-3668</p>
-            <p>Email: contact@yahoo.com</p>
-          </div>
-        </div>
-        <div class="employer">
-          <div class="employer-img"></div>
-          <div class="employer-info">
-            <h4>Emma Stone</h4>
-            <p>Warehouse Manager</p>
-            <p>Phone: +1-305-484-7492</p>
-            <p>Email: contact@gmail.com</p>
+            <h4>{{ employer.name }}</h4>
+            <p>{{ employer.position }}</p>
+            <p>Phone: {{ employer.phone }}</p>
+            <p>Email: {{ employer.email }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <main-footer />
 </template>
 
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
 export default {
-  components: { SubHeader, ActionButton },
+  components: { SubHeader, ActionButton, MainHeader, MainFooter },
   name: "ContactView",
+  data() {
+    return {
+      employers: [
+        {
+          name: "Mark Franklin",
+          position: "Chief Execution Officer (CEO)",
+          phone: "+1-305-984-5462",
+          email: "contact@gmail.com",
+        },
+        {
+          name: "William Smith",
+          position: "Senior Marketing Manager",
+          phone: "+1-305-753-3668",
+          email: "contact@yahoo.com",
+        },
+        {
+          name: "Emma Stone",
+          position: "Warehouse Manager",
+          phone: "+1-305-484-7492",
+          email: "contact@gmail.com",
+        },
+      ],
+    };
+  },
+  
 };
 </script>
 
