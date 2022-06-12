@@ -38,8 +38,8 @@ export default {
   text-align: center;
   background-color: whitesmoke;
   border-radius: 10px;
-  padding: 30px 45px;
-  min-width: 350px;
+  padding: 30px 30px;
+  min-width: 320px;
   margin-inline: auto;
   position: relative;
 }

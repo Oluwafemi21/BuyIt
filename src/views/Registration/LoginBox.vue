@@ -43,8 +43,8 @@ export default {
   text-align: center;
   background-color: whitesmoke;
   border-radius: 10px;
-  padding: 50px 45px;
-  min-width: 350px;
+  padding: 50px 30px;
+  min-width: 300px;
   margin-inline: auto;
   position: relative;
 }
