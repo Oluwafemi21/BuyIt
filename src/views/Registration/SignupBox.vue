@@ -338,9 +338,8 @@ form .form-line {
   color: var(--brown);
 }
 
-input[type="checkbox"] {
+.checkbox input[type="checkbox"] {
   height: 16px;
-  width: 16px;
   cursor: pointer;
 }
 
