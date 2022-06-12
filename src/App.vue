@@ -24,6 +24,7 @@ export default {
   --dark-green: #008765;
   --bg: #f0eff4;
   --purple: #845ec2;
+  --grey-2: rgba(228, 220, 220, 0.767);
 }
 
 * {
@@ -107,7 +108,6 @@ textarea {
   resize: none;
   padding: 12px;
   font-size: 1.6rem;
-  outline-offset: 0px;
 }
 
 input[type="number"] {

@@ -25,7 +25,7 @@ button {
 }
 
 button:hover {
-  background-color: transparent;
-  color: var(--dim-blue);
+  background-color: #083e46;
+  border-color: #083e46;
 }
 </style>

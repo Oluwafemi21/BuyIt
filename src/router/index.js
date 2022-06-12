@@ -10,7 +10,17 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import("../views/LoginBox.vue"),
+    component: () => import("../views/Registration/LoginBox.vue"),
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import("../views/Registration/SignupBox.vue"),
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: () => import("../views/Registration/ForgotPassword.vue"),
   },
   {
     path: "/about",
