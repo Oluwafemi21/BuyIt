@@ -17,6 +17,7 @@
             <i class="fal fa-shopping-bag"></i>
           </router-link>
         </div>
+
         <div class="mobile-menu">
           <router-link to="/cart">
             <i class="fal fa-shopping-bag"></i>

@@ -6,101 +6,116 @@
   />
   <section class="cart-section">
     <div class="container">
-      <div class="cart-details">
-        <table>
-          <thead>
-            <tr>
-              <td>Remove</td>
-              <td>Image</td>
-              <td>Product</td>
-              <td>Price</td>
-              <td>Quantity</td>
-              <td>Subtotal</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><i class="far fa-times-circle"></i></td>
-              <td><div class="img"></div></td>
-              <td>Classic White Sneakers</td>
-              <td>$78.00</td>
-              <td>
-                <input
-                  type="number"
-                  value="1"
-                  placeholder="QTY"
-                  min="1"
-                  max="10"
-                />
-              </td>
-              <td>$78.00</td>
-            </tr>
-            <tr>
-              <td><i class="far fa-times-circle"></i></td>
-              <td><div class="img"></div></td>
-              <td>Classic White Sneakers</td>
-              <td>$78.00</td>
-              <td>
-                <input
-                  type="number"
-                  value="1"
-                  placeholder="QTY"
-                  min="1"
-                  max="10"
-                />
-              </td>
-              <td>$78.00</td>
-            </tr>
-            <tr>
-              <td><i class="far fa-times-circle"></i></td>
-              <td><div class="img"></div></td>
-              <td>Classic White Sneakers</td>
-              <td>$78.00</td>
-              <td>
-                <input
-                  type="number"
-                  value="1"
-                  placeholder="QTY"
-                  min="1"
-                  max="10"
-                />
-              </td>
-              <td>$78.00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="checkout-section">
-        <div class="coupon">
-          <h3>Apply Coupon</h3>
-          <form>
-            <input type="text" placeholder="Enter coupon code" />
-            <action-button btnvalue="Apply" />
-          </form>
-        </div>
-        <div class="checkout">
-          <h3>Cart Details</h3>
+      <section v-if="loggedIn">
+        <div class="cart-details">
           <table>
             <thead>
               <tr>
-                <td>Cart Total</td>
-                <td>$335.00</td>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Shipping Fee</td>
-                <td>Free</td>
+                <td><i class="far fa-times-circle"></i></td>
+                <td><div class="img"></div></td>
+                <td>Classic White Sneakers</td>
+                <td>$78.00</td>
+                <td>
+                  <input
+                    type="number"
+                    value="1"
+                    placeholder="QTY"
+                    min="1"
+                    max="10"
+                  />
+                </td>
+                <td>$78.00</td>
               </tr>
               <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>$335.00</strong></td>
+                <td><i class="far fa-times-circle"></i></td>
+                <td><div class="img"></div></td>
+                <td>Classic White Sneakers</td>
+                <td>$78.00</td>
+                <td>
+                  <input
+                    type="number"
+                    value="1"
+                    placeholder="QTY"
+                    min="1"
+                    max="10"
+                  />
+                </td>
+                <td>$78.00</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-times-circle"></i></td>
+                <td><div class="img"></div></td>
+                <td>Classic White Sneakers</td>
+                <td>$78.00</td>
+                <td>
+                  <input
+                    type="number"
+                    value="1"
+                    placeholder="QTY"
+                    min="1"
+                    max="10"
+                  />
+                </td>
+                <td>$78.00</td>
               </tr>
             </tbody>
           </table>
-          <action-button btnvalue="Proceed to Checkout" />
         </div>
+
+        <div class="checkout-section">
+          <div class="coupon">
+            <h3>Apply Coupon</h3>
+            <form>
+              <input type="text" placeholder="Enter coupon code" />
+              <action-button btnvalue="Apply" />
+            </form>
+          </div>
+          <div class="checkout">
+            <h3>Cart Details</h3>
+            <table>
+              <thead>
+                <tr>
+                  <td>Cart Total</td>
+                  <td>$335.00</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Shipping Fee</td>
+                  <td>Free</td>
+                </tr>
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td><strong>$335.00</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <action-button btnvalue="Proceed to Checkout" />
+          </div>
+        </div>
+      </section>
+      <div v-else class="no-cart">
+        <div class="no-cart-text">
+          <img src="@/assets/images/empty-cart.svg" alt="empty-cart" />
+          <h3>Your cart is empty!</h3>
+          <p>
+            Browse our <router-link to="/shop">shop</router-link> and discover
+            our latest products.
+          </p>
+        </div>
+        <router-link to="/login">
+          <action-button btnvalue="Start Shopping" />
+        </router-link>
       </div>
     </div>
   </section>
@@ -116,11 +131,30 @@ import MainFooter from "@/components/MainFooter.vue";
 export default {
   components: { SubHeader, ActionButton, MainHeader, MainFooter },
   name: "CartView",
- 
+  data() {
+    return {
+      loggedIn: false,
+    };
+  },
 };
 </script>
 
 <style scoped>
+.no-cart {
+  display: grid;
+  place-items: center;
+  gap: 30px;
+}
+
+.no-cart-text {
+  text-align: center;
+}
+
+.no-cart img {
+  height: 150px;
+  width: 30%;
+}
+
 .cart-details {
   overflow-x: auto;
 }

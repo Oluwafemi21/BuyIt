@@ -1,4 +1,5 @@
 <template>
+  <main-header />
   <section class="container">
     <div class="cart-item">
       <div class="image-section">
@@ -78,12 +79,14 @@
 <script>
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
 import ActionButton from "@/components/ActionButton.vue";
+import MainHeader from "@/components/MainHeader.vue";
 
 export default {
   name: "CartItemView",
   components: {
     ProductCard,
     ActionButton,
+    MainHeader,
   },
   data() {
     return {
@@ -187,7 +190,6 @@ export default {
       ],
     };
   },
-
 };
 </script>
 

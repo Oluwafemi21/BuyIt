@@ -5,20 +5,20 @@
         <i class="fas fa-times"></i>
       </router-link>
       <h4>Create Account</h4>
-      <form action="#">
+      <form @submit.prevent="registerUser">
         <div class="form-line">
           <div class="form-item">
-            <input type="text" required />
+            <input type="text" required v-model="firstName" />
             <label>First Name</label>
           </div>
           <div class="form-item">
-            <input type="text" required />
+            <input type="text" required v-model="lastName" />
             <label>Last Name</label>
           </div>
         </div>
         <div class="form-line">
           <div class="form-item">
-            <input type="email" required />
+            <input type="email" required v-model="emailAddress" />
             <label>Email Address</label>
           </div>
           <div class="form-item">
@@ -73,26 +73,34 @@
             </span>
           </div>
           <div class="form-item">
-            <input type="tel" required />
+            <input type="tel" required v-model="phoneNumber" />
             <label>Phone number</label>
           </div>
         </div>
         <div class="checkbox">
-          <input type="checkbox" />
-          <label class="check-text">
+          <input type="checkbox" id="checkbox1" required v-model="terms" />
+          <label class="check-text" for="checkbox1">
             I accept the
-            <router-link to="/">Terms & Conditions</router-link><br />
-            and Privacy and Cookie Notice.
+            <router-link to="/">Terms & Conditions</router-link> and Privacy and
+            Cookie Notice.
           </label>
         </div>
         <div class="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <label for="checkbox" class="check-text">
+          <input type="checkbox" id="checkbox2" />
+          <label for="checkbox2" class="check-text">
             I want to receive Buy-it Newsletters with the best deals and offers
           </label>
         </div>
         <div class="action-buttons">
-          <action-button btnvalue="CREATE ACCOUNT" />
+          <div v-if="email_error">
+            <p class="weak" v-for="(error, index) in email_error" :key="index">
+              {{ error }}
+            </p>
+          </div>
+          <action-button>
+            <button-preloader v-if="userCreated" />
+            <span v-else>CREATE ACCOUNT</span>
+          </action-button>
           <div class="or">
             <hr />
             <span>OR</span>
@@ -115,14 +123,21 @@
 </template>
 
 <script>
+import axios from "axios";
 import ActionButton from "@/components/ActionButton.vue";
+import ButtonPreloader from "@/components/ButtonPreloader.vue";
 export default {
-  components: { ActionButton },
+  components: { ActionButton, ButtonPreloader },
   name: "SignUpBox",
   data() {
     return {
+      firstName: "",
+      lastName: "",
+      emailAddress: "",
       password: "",
       password2: "",
+      phoneNumber: "",
+      terms: "",
       showPassword: false,
       confirmPassword: false,
       passwordValidator: false,
@@ -130,6 +145,8 @@ export default {
       errorMessage: "",
       validator: false,
       validator2: false,
+      userCreated: false,
+      email_error: "",
     };
   },
   methods: {
@@ -166,6 +183,36 @@ export default {
         this.confirmPasswordValidator = "";
         this.validator2 = false;
       }
+    },
+    async registerUser() {
+      // Send a POST request
+      this.userCreated = true;
+      await axios({
+        method: "post",
+        url: "https://thegorana.herokuapp.com/users/register/",
+        data: {
+          first_name: this.firstName,
+          last_name: this.lastName,
+          email: this.emailAddress,
+          password: this.password,
+          password2: this.password2,
+          phone: this.phoneNumber,
+        },
+      })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("Success!!");
+            console.log(res);
+            this.userCreated = false;
+            this.$router.push("/login");
+          } else {
+            throw res;
+          }
+        })
+        .catch((err) => {
+          this.userCreated = false;
+          this.email_error = err.response.data.email;
+        });
     },
   },
 };

@@ -165,6 +165,7 @@ strong {
 .apps a:hover {
   background-color: var(--dark-green);
   color: white;
+  border-color: var(--dark-green);
 }
 
 .apps a:hover p {
