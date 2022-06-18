@@ -22,9 +22,11 @@ export default {
   --dim-blue: #025661;
   --dark-blue: #2f4858;
   --dark-green: #008765;
+  --light-green: #00b89323;
   --bg: #f0eff4;
   --purple: #845ec2;
   --grey-2: rgba(228, 220, 220, 0.767);
+  --red: #f51a2d;
 }
 
 * {

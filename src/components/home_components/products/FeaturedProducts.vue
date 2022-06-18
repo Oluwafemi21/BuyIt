@@ -1,15 +1,19 @@
 <template>
   <section class="products">
     <h1>Featured Products</h1>
-    <p>Lorem ipsum dolor sit amet consectetur.</p>
+    <p class="highlight">The best selling products we have on sale.</p>
     <div class="product__container">
       <product-card
         v-for="(product, index) in featuredProducts"
         :key="index"
+        :productId="product._id"
+        :productName="product.name"
         :brand="product.brand"
-        :productName="product.productName"
         :price="product.price"
-        :ratings="product.ratings"
+        :currency="product.currency"
+        :ratings="product.rating"
+        :image_url="product.images[0]"
+        :in_stock="product.in_stock"
       />
     </div>
   </section>
@@ -33,6 +37,11 @@ export default {
 
 .products h1 {
   display: inline-block;
+  margin-bottom: 10px;
+}
+
+.products .highlight {
+  font-size: 1.9rem;
 }
 
 .products h1::after {

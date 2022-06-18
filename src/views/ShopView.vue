@@ -9,10 +9,14 @@
       <product-card
         v-for="(product, index) in products"
         :key="index"
+        :productId="product._id"
+        :productName="product.name"
         :brand="product.brand"
-        :productName="product.productName"
         :price="product.price"
-        :ratings="product.ratings"
+        :currency="product.currency"
+        :ratings="product.rating"
+        :image_url="product.images[0]"
+        :in_stock="product.in_stock"
       />
     </div>
   </div>
@@ -27,110 +31,25 @@ import ProductCard from "@/components/home_components/cards/ProductCard.vue";
 import PageIndex from "@/components/PageIndex.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
+
+import axios from "axios";
+
 export default {
   name: "ShopView",
   components: { SubHeader, ProductCard, PageIndex, MainHeader, MainFooter },
   data() {
     return {
-      products: [
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 78,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 50,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 45,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 56,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 89,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 43,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 40,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 53,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 68,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 72,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 49,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 65,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 115,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 80,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 60,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 75,
-          ratings: 4,
-        },
-      ],
+      products: [],
     };
+  },
+  async mounted() {
+    let res1 = await axios.get("http://thegorana.herokuapp.com/products");
+    let res2 = await axios.get(
+      "http://thegorana.herokuapp.com/products/?page=2"
+    );
+    this.featured = res1.data.results.slice(0, 8);
+    this.newProducts = res2.data.results.slice(0, 8);
+    this.products = this.featured.concat(this.newProducts);
   },
 };
 </script>

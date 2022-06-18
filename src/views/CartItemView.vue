@@ -6,18 +6,20 @@
         <router-link to="/shop"
           ><i class="fal fa-long-arrow-alt-left"></i
         ></router-link>
-        <div class="main-img"></div>
+        <img :src="product.images[0]" class="main-img" />
         <div class="img-thumbnails">
-          <div class="img"></div>
-          <div class="img"></div>
-          <div class="img"></div>
-          <div class="img"></div>
+          <img
+            v-for="(image, index) in product.images.slice(0, 4)"
+            :key="index"
+            :src="image"
+            class="thumbnail"
+          />
         </div>
       </div>
       <div class="product-details">
-        <span>Home / T-Shirt</span>
-        <h4>Men's Fashion T-Shirt</h4>
-        <h4>$139</h4>
+        <span>Home / {{ product.brand }}</span>
+        <h4>{{ product.name }}</h4>
+        <h4>{{ formattedPrice }}</h4>
         <select name="size" id="">
           <option>Select Size</option>
           <option value="M">Medium</option>
@@ -31,45 +33,27 @@
         </div>
         <h4>Product Details</h4>
         <p class="product-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          porro, quis veniam necessitatibus a sed vitae illo omnis culpa
-          similique? Laudantium natus doloremque, aperiam labore, iste minima ad
-          alias nisi saepe pariatur odit laboriosam ab fugiat ea, officia eaque
-          magni. Nulla facere quod iste blanditiis explicabo veniam. Facilis,
-          dolore maiores. Cumque, minima aperiam. Obcaecati minima sit libero,
-          molestias eos ab!
+          {{ product.description }}
         </p>
       </div>
     </div>
 
     <div class="extra">
       <h1>Featured Products</h1>
-      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <p class="highlight">The best selling products we have on sale.</p>
       <div class="product__container">
-        <product-card
-          brand="addidas"
-          productName="Classic White Sneakers"
-          price="$78"
-          :ratings="4"
-        />
-        <product-card
-          brand="addidas"
-          productName="Classic White Sneakers"
-          price="$78"
-          :ratings="5"
-        />
-        <product-card
-          brand="addidas"
-          productName="Classic White Sneakers"
-          price="$78"
-          :ratings="4"
-        />
-        <product-card
-          brand="addidas"
-          productName="Classic White Sneakers"
-          price="$78"
-          :ratings="5"
-        />
+        <!-- <product-card
+          v-for="(product, index) in featuredProducts"
+          :key="index"
+          :productId="product._id"
+          :productName="product.name"
+          :brand="product.brand"
+          :price="product.price"
+          :currency="product.currency"
+          :ratings="product.rating"
+          :image_url="product.images[0]"
+          :in_stock="product.in_stock"
+        /> -->
       </div>
     </div>
   </section>
@@ -81,6 +65,8 @@ import ProductCard from "@/components/home_components/cards/ProductCard.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
 
+import axios from "axios";
+
 export default {
   name: "CartItemView",
   components: {
@@ -88,107 +74,23 @@ export default {
     ActionButton,
     MainHeader,
   },
+  props: ["product"],
   data() {
     return {
-      products: [
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 78,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 50,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 45,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 56,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 89,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 43,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 40,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 53,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 68,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 72,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 49,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 65,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 115,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 80,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 60,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 75,
-          ratings: 4,
-        },
-      ],
+      product: [],
     };
+  },
+  computed: {
+    formattedPrice() {
+      return this.product.currency + " " + this.product.price.toFixed(2);
+    },
+  },
+  async created() {
+    let res = await axios.get(
+      `http://thegorana.herokuapp.com/products/${this.$route.params.id}`
+    );
+    this.product = res.data;
+    console.log(this.product);
   },
 };
 </script>
@@ -220,11 +122,12 @@ export default {
   top: 0;
   padding: 0.5rem 1rem;
   font-size: 1.4rem;
+  text-align: center;
   border: none;
   border-radius: 6px;
   color: white;
   font-weight: 600;
-  background-color: black;
+  background-color: var(--dark-blue);
   transition: opacity 0.25s;
 }
 
@@ -234,8 +137,8 @@ export default {
 
 .main-img {
   height: 55vh;
-  width: 100%;
-  background-color: black;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .img-thumbnails {
@@ -246,10 +149,9 @@ export default {
   width: 100%;
 }
 
-.img-thumbnails .img {
-  height: 20vh;
+.img-thumbnails .thumbnail {
+  height: auto;
   max-width: 100%;
-  background-color: black;
   cursor: pointer;
 }
 

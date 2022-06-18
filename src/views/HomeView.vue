@@ -39,108 +39,13 @@ import MainHeader from "@/components/MainHeader.vue";
 import NewsLetter from "@/components/NewsLetter.vue";
 import MainFooter from "@/components/MainFooter.vue";
 
+import axios from "axios";
+
 export default {
   name: "HomeView",
   data() {
     return {
-      products: [
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 78,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 50,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 45,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 56,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 89,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 43,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 40,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 53,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 68,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 72,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 49,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 65,
-          ratings: 5,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 115,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 80,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 60,
-          ratings: 4,
-        },
-        {
-          brand: "addidas",
-          productName: "Classic White Sneakers",
-          price: 75,
-          ratings: 4,
-        },
-      ],
+      products: [],
     };
   },
   components: {
@@ -161,6 +66,15 @@ export default {
     newArrivals() {
       return this.products.slice(8, 16);
     },
+  },
+  async created() {
+    let res1 = await axios.get("http://thegorana.herokuapp.com/products");
+    let res2 = await axios.get(
+      "http://thegorana.herokuapp.com/products/?page=2"
+    );
+    this.featured = res1.data.results.slice(0, 8);
+    this.newProducts = res2.data.results.slice(0, 8);
+    this.products = this.featured.concat(this.newProducts);
   },
 };
 </script>
@@ -194,5 +108,85 @@ export default {
 
 .hero__text p {
   margin-bottom: 1rem;
+}
+
+/* Preloader */
+.lds-spinner {
+  color: official;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  width: 6px;
+  height: 18px;
+  border-radius: 20%;
+  background: var(--dark-green);
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style>

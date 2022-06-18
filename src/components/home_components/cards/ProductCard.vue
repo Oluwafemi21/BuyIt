@@ -1,15 +1,20 @@
 <template>
   <div class="product__card">
-    <div class="product__image"></div>
-    <span class="brand">{{ brand }}</span>
+    <img :src="image_url" class="product__image" />
+    <div class="product__header">
+      <span class="brand">{{ brand }}</span>
+      <span class="product__qty">{{
+        in_stock ? "In Stock" : "Out of Stock"
+      }}</span>
+    </div>
     <p class="product__name">{{ productName }}</p>
     <div class="rating">
       <i v-for="rating in ratings" :key="rating" class="fas fa-star"></i>
     </div>
     <div class="price">
-      <span>${{ price }}</span>
-      <router-link :to="'/cart/' + productName" class="cart">
-        <i class="fal fa-shopping-cart"></i>
+      <span>{{ formattedPrice }}</span>
+      <router-link :to="'/cart/' + productId">
+        <button class="cart"><i class="fal fa-shopping-cart"></i></button>
       </router-link>
     </div>
   </div>
@@ -18,13 +23,19 @@
 <script>
 export default {
   name: "ProductCard",
-  props: {
-    image_url: String,
-    brand: String,
-    productName: String,
-    price: Number,
-    ratings: {
-      type: Number,
+  props: [
+    "productId",
+    "image_url",
+    "brand",
+    "productName",
+    "price",
+    "currency",
+    "ratings",
+    "in_stock",
+  ],
+  computed: {
+    formattedPrice() {
+      return this.currency + " " + this.price.toFixed(2);
     },
   },
 };
@@ -43,20 +54,39 @@ export default {
 }
 
 .product__image {
-  height: 200px;
-  width: auto;
+  height: auto;
+  max-width: 100%;
   border-radius: 5px;
-  background-color: var(--dim-blue);
 }
 
 .product__name {
-  padding-block: 5px;
+  padding-block: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .brand {
   font-size: 1.5rem;
-  display: block;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.product__qty {
+  font-size: 1.5rem;
+  display: inline-block;
   padding-top: 10px;
+  background-color: var(--dark-green);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .rating {
@@ -81,16 +111,13 @@ export default {
 
 .cart {
   height: 35px;
-  line-height: 40px;
   width: 35px;
-  background-color: var(--dark-green);
+  color: var(--dark-green);
   border-radius: 50%;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
   text-align: center;
-  color: white;
-}
-
-.cart:hover {
-  opacity: 0.85;
+  background-color: var(--light-green);
 }
 </style>
