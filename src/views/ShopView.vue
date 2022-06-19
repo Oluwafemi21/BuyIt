@@ -43,9 +43,9 @@ export default {
     };
   },
   async mounted() {
-    let res1 = await axios.get("http://thegorana.herokuapp.com/products");
+    let res1 = await axios.get("https://thegorana.herokuapp.com/products");
     let res2 = await axios.get(
-      "http://thegorana.herokuapp.com/products/?page=2"
+      "https://thegorana.herokuapp.com/products/?page=2"
     );
     this.featured = res1.data.results.slice(0, 8);
     this.newProducts = res2.data.results.slice(0, 8);
