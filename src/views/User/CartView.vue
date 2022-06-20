@@ -133,7 +133,7 @@ export default {
   name: "CartView",
   data() {
     return {
-      loggedIn: false,
+      loggedIn: true,
     };
   },
 };

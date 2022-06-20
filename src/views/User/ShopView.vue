@@ -5,7 +5,7 @@
     subHeading="Save more with coupons up to 70% off"
   />
   <div class="container">
-    <div class="product__container">
+    <div class="product__container" v-if="loaded">
       <product-card
         v-for="(product, index) in products"
         :key="index"
@@ -19,6 +19,7 @@
         :in_stock="product.in_stock"
       />
     </div>
+    <product-preloader v-else> Loading Products... </product-preloader>
   </div>
   <page-index />
   <main-footer />
@@ -33,13 +34,22 @@ import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 
 import axios from "axios";
+import ProductPreloader from "@/components/ProductPreloader.vue";
 
 export default {
   name: "ShopView",
-  components: { SubHeader, ProductCard, PageIndex, MainHeader, MainFooter },
+  components: {
+    SubHeader,
+    ProductCard,
+    PageIndex,
+    MainHeader,
+    MainFooter,
+    ProductPreloader,
+  },
   data() {
     return {
       products: [],
+      loaded: false,
     };
   },
   async mounted() {
@@ -50,6 +60,7 @@ export default {
     this.featured = res1.data.results.slice(0, 8);
     this.newProducts = res2.data.results.slice(0, 8);
     this.products = this.featured.concat(this.newProducts);
+    this.loaded = true;
   },
 };
 </script>

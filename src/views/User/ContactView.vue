@@ -72,7 +72,9 @@
           v-for="(employer, index) in employers"
           :key="index"
         >
-          <div class="employer-img"></div>
+          <div class="employer-img">
+            <img :src="employer.image" :alt="employer.name" />
+          </div>
           <div class="employer-info">
             <h4>{{ employer.name }}</h4>
             <p>{{ employer.position }}</p>
@@ -99,18 +101,21 @@ export default {
     return {
       employers: [
         {
+          image: "assets/images/people/1.png",
           name: "Mark Franklin",
           position: "Chief Execution Officer (CEO)",
           phone: "+1-305-984-5462",
           email: "contact@gmail.com",
         },
         {
+          image: "../../assets/images/people/2.png",
           name: "William Smith",
           position: "Senior Marketing Manager",
           phone: "+1-305-753-3668",
           email: "contact@yahoo.com",
         },
         {
+          image: "../assets/images/people/3.png",
           name: "Emma Stone",
           position: "Warehouse Manager",
           phone: "+1-305-484-7492",
@@ -119,7 +124,6 @@ export default {
       ],
     };
   },
-  
 };
 </script>
 
@@ -216,7 +220,11 @@ textarea:hover {
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  background-color: black;
+}
+
+.employer-img img {
+  max-width: 100%;
+  height: auto;
 }
 
 .employer-info {

@@ -19,7 +19,7 @@ export default {
 .sub-heading {
   background-color: var(--dim-blue);
   color: white;
-  height: 30vh;
+  height: 20vh;
   display: grid;
   place-content: center;
   text-align: center;

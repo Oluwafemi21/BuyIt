@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/User/HomeView.vue";
 
 const routes = [
   {
@@ -10,17 +10,17 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import("../views/Registration/LoginBox.vue"),
+    component: () => import("../views/UserRegistration/LoginBox.vue"),
   },
   {
     path: '/signup',
     name: 'signup',
-    component: () => import("../views/Registration/SignupBox.vue"),
+    component: () => import("../views/UserRegistration/SignupBox.vue"),
   },
   {
     path: '/forgot-password',
     name: 'forgot-password',
-    component: () => import("../views/Registration/ForgotPassword.vue"),
+    component: () => import("../views/UserRegistration/ForgotPassword.vue"),
   },
   {
     path: "/about",
@@ -29,32 +29,52 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+      import(/* webpackChunkName: "about" */ "../views/User/AboutView.vue"),
   },
   {
     path: "/shop",
     name: "shop",
-    component: () => import("../views/ShopView.vue"),
+    component: () => import("../views/User/ShopView.vue"),
   },
   {
     path: "/blog",
     name: "blog",
-    component: () => import("../views/BlogView.vue"),
+    component: () => import("../views/User/BlogView.vue"),
   },
   {
     path: "/contact",
     name: "contact",
-    component: () => import("../views/ContactView.vue"),
+    component: () => import("../views/User/ContactView.vue"),
   },
   {
     path: "/cart",
     name: "cart",
-    component: () => import("../views/CartView.vue"),
+    component: () => import("../views/User/CartView.vue"),
   },
   {
     path: '/cart/:id',
     name: 'cartItem',
-    component: () => import("../views/CartItemView.vue"),
+    component: () => import("../views/User/CartItemView.vue"),
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import("../views/Admin/AdminPage.vue"),
+    children: [
+      {
+        path: '/admin/overview',
+        name: 'overview',
+        component: () => import("../views/Admin/OverviewPage.vue"),
+      }, {
+        path: '/admin/products',
+        name: 'products',
+        component: () => import("../views/Admin/ProductsPage.vue"),
+      }, {
+        path: '/admin/orders',
+        name: 'orders',
+        component: () => import("../views/Admin/OrdersPage.vue"),
+      },
+    ]
   },
 
 ];

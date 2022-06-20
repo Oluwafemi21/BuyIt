@@ -1,18 +1,19 @@
 <template>
   <main-header />
   <section class="container">
-    <div class="cart-item">
+    <router-link to="/shop" id="back"
+      ><i class="fal fa-long-arrow-alt-left"></i
+    ></router-link>
+    <div class="cart-item" v-if="loaded">
       <div class="image-section">
-        <router-link to="/shop"
-          ><i class="fal fa-long-arrow-alt-left"></i
-        ></router-link>
-        <img :src="product.images[0]" class="main-img" />
+        <img :src="activeImage" class="main-img" />
         <div class="img-thumbnails">
           <img
             v-for="(image, index) in product.images.slice(0, 4)"
             :key="index"
             :src="image"
             class="thumbnail"
+            @click="setActiveImage(index)"
           />
         </div>
       </div>
@@ -38,11 +39,11 @@
       </div>
     </div>
 
-    <div class="extra">
+    <!-- <div class="extra" v-if="loaded">
       <h1>Featured Products</h1>
       <p class="highlight">The best selling products we have on sale.</p>
       <div class="product__container">
-        <!-- <product-card
+         <product-card
           v-for="(product, index) in featuredProducts"
           :key="index"
           :productId="product._id"
@@ -53,8 +54,26 @@
           :ratings="product.rating"
           :image_url="product.images[0]"
           :in_stock="product.in_stock"
-        /> -->
+        />
       </div>
+    </div> -->
+
+    <div class="preloader" v-else>
+      <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p>Loading Product...</p>
     </div>
   </section>
 </template>
@@ -74,11 +93,17 @@ export default {
     ActionButton,
     MainHeader,
   },
-  props: ["product"],
   data() {
     return {
+      activeImage: "",
       product: [],
+      loaded: false,
     };
+  },
+  methods: {
+    setActiveImage(image) {
+      this.activeImage = this.product.images[image];
+    },
   },
   computed: {
     formattedPrice() {
@@ -90,7 +115,8 @@ export default {
       `https://thegorana.herokuapp.com/products/${this.$route.params.id}`
     );
     this.product = res.data;
-    console.log(this.product);
+    this.loaded = true;
+    this.activeImage = this.product.images[0];
   },
 };
 </script>
@@ -116,12 +142,9 @@ export default {
   justify-content: space-between;
 }
 
-.image-section a {
-  position: absolute;
-  left: -4rem;
-  top: 0;
-  padding: 0.5rem 1rem;
-  font-size: 1.4rem;
+#back {
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
   text-align: center;
   border: none;
   border-radius: 6px;
@@ -131,7 +154,7 @@ export default {
   transition: opacity 0.25s;
 }
 
-.image-section a:hover {
+#back:hover {
   opacity: 0.85;
 }
 
@@ -153,6 +176,10 @@ export default {
   height: auto;
   max-width: 100%;
   cursor: pointer;
+}
+
+.img-thumbnails .thumbnail:hover {
+  opacity: 0.7;
 }
 
 /* Product Details */
