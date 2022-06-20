@@ -59,22 +59,32 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import("../views/Admin/AdminPage.vue"),
+    component: () => import("../views/Admin/Admin Views/AdminPage.vue"),
     children: [
       {
         path: '/admin/overview',
         name: 'overview',
-        component: () => import("../views/Admin/OverviewPage.vue"),
+        component: () => import("../views/Admin/Admin Views/OverviewPage.vue"),
       }, {
         path: '/admin/products',
         name: 'products',
-        component: () => import("../views/Admin/ProductsPage.vue"),
+        component: () => import("../views/Admin/Admin Views/ProductsPage.vue"),
       }, {
         path: '/admin/orders',
         name: 'orders',
-        component: () => import("../views/Admin/OrdersPage.vue"),
+        component: () => import("../views/Admin/Admin Views/OrdersPage.vue"),
       },
+      {
+        path: '/admin/finance',
+        name: 'finance',
+        component: () => import("../views/Admin/Admin Views/FinanceMetrics.vue"),
+      }
     ]
+  },
+  {
+    path: '/admin/login',
+    name: 'adminLogin',
+    component: () => import("../views/Admin/AdminLogin.vue"),
   },
 
 ];
