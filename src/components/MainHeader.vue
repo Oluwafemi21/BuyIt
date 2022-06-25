@@ -7,22 +7,31 @@
         </router-link>
 
         <div class="nav__links" :class="{ activeNav: showSideNav }">
-          <i class="far fa-times close-btn" @click="hideNav()"></i>
-          <router-link @click="hideNav()" to="/">Home</router-link>
-          <router-link @click="hideNav()" to="/shop">Shop</router-link>
-          <router-link @click="hideNav()" to="/blog">Blog</router-link>
-          <router-link @click="hideNav()" to="/about">About</router-link>
-          <router-link @click="hideNav()" to="/contact">Contact</router-link>
-          <router-link @click="hideNav()" to="/cart" class="desktop-cart">
+          <i class="far fa-times close-btn" @click="hideNav"></i>
+          <router-link @click="hideNav" to="/">Home</router-link>
+          <router-link @click="hideNav" to="/shop">Shop</router-link>
+          <router-link @click="hideNav" to="/blog">Blog</router-link>
+          <router-link @click="hideNav" to="/about">About</router-link>
+          <router-link @click="hideNav" to="/contact">Contact</router-link>
+          <router-link @click="hideNav" to="/cart" class="desktop-cart">
             <i class="fal fa-shopping-bag"></i>
           </router-link>
+          <router-link @click="hideNav" to="/login" class="auth-link"
+            >Login</router-link
+          >
+          <router-link @click="hideNav" to="/signup" class="auth-link">
+            <action-button>Sign Up</action-button>
+          </router-link>
+          <router-link @click="hideNav" to="/" class="auth-link"
+            >Logout</router-link
+          >
         </div>
 
         <div class="mobile-menu">
           <router-link to="/cart">
             <i class="fal fa-shopping-bag"></i>
           </router-link>
-          <i class="fas fa-bars" @click="showNav()"></i>
+          <i class="fas fa-bars" @click="showNav"></i>
         </div>
       </nav>
     </div>
@@ -30,7 +39,9 @@
 </template>
 
 <script>
+import ActionButton from "./ActionButton.vue";
 export default {
+  components: { ActionButton },
   name: "MainHeader",
   props: {
     msg: String,
@@ -117,6 +128,10 @@ a.active__page,
 
 .nav__links a.router-link-exact-active::after {
   width: 70%;
+}
+
+.nav__links .auth-link::after {
+  display: none;
 }
 
 .desktop-cart {

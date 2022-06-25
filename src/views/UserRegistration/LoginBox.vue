@@ -5,10 +5,18 @@
         <i class="fas fa-times"></i>
       </router-link>
       <h3>Buy-It</h3>
-      <form>
-        <input type="email" required placeholder="Email" />
-        <input type="password" required placeholder="Password" />
-        <router-link to="/"> <action-button btnvalue="Login" /></router-link>
+      <form @submit.prevent="loginUser">
+        <input type="email" v-model="email" required placeholder="Email" />
+        <input
+          type="password"
+          v-model="password"
+          required
+          placeholder="Password"
+        />
+        <action-button>
+          <button-preloader v-if="userLoggedIn" />
+          <span v-else>Login</span>
+        </action-button>
         <router-link class="link" to="/forgot-password"
           >Forgot Password?</router-link
         >
@@ -21,10 +29,54 @@
 
 <script>
 import ActionButton from "@/components/ActionButton.vue";
+import ButtonPreloader from "@/components/ButtonPreloader.vue";
+
+import axios from "axios";
 
 export default {
-  components: { ActionButton },
+  components: { ActionButton, ButtonPreloader },
   name: "LoginBox",
+  data() {
+    return {
+      email: "",
+      password: "",
+      userLoggedIn: false,
+    };
+  },
+  methods: {
+    async loginUser() {
+      console.log("Work ode");
+      // Send a POST request
+      this.userLoggedIn = true;
+      await axios({
+        method: "post",
+        url: "https://thegorana.herokuapp.com/users/login/",
+        data: {
+          email: this.email,
+          password: this.password,
+        },
+      })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("Success!!");
+            console.log(res);
+            this.userLoggedIn = false;
+            this.$router.push("/");
+          } else {
+            throw res;
+          }
+        })
+        .catch((err) => {
+          this.userLoggedIn = false;
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    console.log(this.$store.state.user);
+    this.$store.commit("loginUser", "Oluwafemi");
+    console.log(this.$store.state.user);
+  },
 };
 </script>
 

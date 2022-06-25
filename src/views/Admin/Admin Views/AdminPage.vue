@@ -48,7 +48,7 @@
             src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
             alt="John Smith"
           />
-          <span class="name">John</span>
+          <span class="name">&#128075; Hi, John!</span>
           <i
             class="fas fa-chevron-down"
             @click="showDropDown = !showDropDown"
@@ -56,14 +56,14 @@
           <div class="dropdown" v-if="showDropDown">
             <div class="dropdown-profile">
               <span>Signed in as</span>
-              <span>John Smith</span>
+              <span class="dropdown-name">John Smith</span>
             </div>
             <router-link to="/">
               <i class="fas fa-user-edit"></i>
               <span>Edit Profile</span>
             </router-link>
             <router-link :to="{ name: 'home' }">
-              <i class="far fa-external-link"></i>
+              <i class="fas fa-external-link"></i>
               <span>Go to Shop</span>
             </router-link>
             <router-link :to="{ name: 'adminLogin' }">
@@ -74,10 +74,7 @@
         </div>
       </nav>
       <div class="container">
-        <div class="welcome">
-          <h3>&#128075; Hi, John!</h3>
-        </div>
-        <router-view> </router-view>
+        <router-view></router-view>
       </div>
     </section>
   </main>
@@ -109,6 +106,8 @@ nav {
   justify-content: space-between;
   padding: 5px 20px;
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
 }
 
 .nav-profile {
@@ -142,7 +141,7 @@ nav {
   top: 35px;
   right: 0;
   transition: 0.25s;
-  width: 130px;
+  width: 170px;
 }
 
 .dropdown-profile {
@@ -163,6 +162,10 @@ nav {
   color: var(--dark-green);
 }
 
+.dropdown-name {
+  font-weight: 500;
+}
+
 .sidebar-toggle {
   display: flex;
   align-items: center;
@@ -178,11 +181,12 @@ main {
 aside {
   height: 100%;
   background-color: var(--dark-blue);
-  width: 250px;
+  width: 220px;
   color: white;
   display: flex;
   flex-direction: column;
   transition: 0.25s;
+  z-index: 2;
 }
 
 .sidebar-header {
@@ -202,6 +206,7 @@ aside {
 .sidebar-header i {
   cursor: pointer;
   font-size: 2rem;
+  display: none;
 }
 
 ul {
@@ -255,13 +260,13 @@ ul a:hover i {
 @media (max-width: 799px) {
   aside {
     position: fixed;
-    left: -250px;
+    left: -220px;
   }
   .open {
     left: 0;
   }
   .sidebar-header i {
-    display: none;
+    display: initial;
   }
 }
 </style>
