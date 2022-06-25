@@ -16,13 +16,16 @@
           <router-link @click="hideNav" to="/cart" class="desktop-cart">
             <i class="fal fa-shopping-bag"></i>
           </router-link>
-          <router-link @click="hideNav" to="/login" class="auth-link"
+          <template  v-if="!user">
+            <router-link @click="hideNav" to="/login" class="auth-link"
             >Login</router-link
           >
-          <router-link @click="hideNav" to="/signup" class="auth-link">
-            <action-button>Sign Up</action-button>
-          </router-link>
-          <router-link @click="hideNav" to="/" class="auth-link"
+            <router-link @click="hideNav" to="/signup" class="auth-link">
+              <action-button>Sign Up</action-button>
+            </router-link>
+          </template>
+
+          <router-link v-else @click="hideNav" to="/" class="auth-link"
             >Logout</router-link
           >
         </div>
@@ -40,6 +43,7 @@
 
 <script>
 import ActionButton from "./ActionButton.vue";
+import { mapState } from 'vuex'
 export default {
   components: { ActionButton },
   name: "MainHeader",
@@ -59,6 +63,21 @@ export default {
       this.showSideNav = false;
     },
   },
+  computed: {
+    ...mapState(['user'])
+  },
+  mounted(){
+    let user = {
+    "message": "Successfully created token for user",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNjJhNjQyMjAzODI1NmE5MTMwMmI0MTJjIiwiZXhwIjoxNjU2MjIzOTg3LCJpYXQiOjE2NTYxODA3ODd9.Ikvh-TfT7W4Xw0MnzelqV7XQV4hbNXv8DaRbAeHuUes",
+    "user_id": "62a6422038256a91302b412c",
+    "email": "kcee1@test.com"
+  }
+    console.log(this.user, 'with map state');
+    this.$store.commit("loginUser", user);
+    console.log(this.$store.state.user);
+
+  }
 };
 </script>
 

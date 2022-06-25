@@ -2,7 +2,8 @@ import { createStore } from "vuex";
 
 const store = createStore({
     state: {
-        user: null
+        user: null,
+        cart: []
     },
     mutations: {
         loginUser(state, payload) {
@@ -11,7 +12,10 @@ const store = createStore({
         }
     },
     actions: {
-        // async loginUser(context, payload) {}
+        set_user(context, payload) {
+            context.commit('loginUser', payload)
+        },
+    
     }
 })
 

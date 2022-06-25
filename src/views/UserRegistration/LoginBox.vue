@@ -30,7 +30,7 @@
 <script>
 import ActionButton from "@/components/ActionButton.vue";
 import ButtonPreloader from "@/components/ButtonPreloader.vue";
-
+import { mapActions } from 'vuex';
 import axios from "axios";
 
 export default {
@@ -44,6 +44,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['set_user']),
     async loginUser() {
       console.log("Work ode");
       // Send a POST request
@@ -59,7 +60,8 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("Success!!");
-            console.log(res);
+            console.log(res.data)
+            this.set_user(res.data)
             this.userLoggedIn = false;
             this.$router.push("/");
           } else {
