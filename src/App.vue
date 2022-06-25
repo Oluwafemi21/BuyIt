@@ -118,4 +118,17 @@ input[type="number"] {
   outline: none;
   width: 5rem;
 }
+
+/* Validation Colors */
+.weak {
+  color: #ff0000;
+}
+
+.medium {
+  color: #ffc107;
+}
+
+.strong {
+  color: #4caf50;
+}
 </style>

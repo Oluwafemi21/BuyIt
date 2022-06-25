@@ -7,12 +7,22 @@
       <h3>Buy-It</h3>
       <form @submit.prevent="loginUser">
         <input type="email" v-model="email" required placeholder="Email" />
-        <input
-          type="password"
-          v-model="password"
-          required
-          placeholder="Password"
-        />
+        <div class="form-group">
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            v-model="password"
+            required
+            placeholder="Password"
+          />
+          <i v-if="showPassword" class="fas fa-eye" @click="togglePassword"></i>
+          <i v-else class="fas fa-eye-slash" @click="togglePassword"></i>
+          <template v-if="loginError">
+            <p class="weak" v-for="(error, index) in loginError" :key="index">
+              {{ error }}
+            </p>
+          </template>
+        </div>
+
         <action-button>
           <button-preloader v-if="userLoggedIn" />
           <span v-else>Login</span>
@@ -30,6 +40,7 @@
 <script>
 import ActionButton from "@/components/ActionButton.vue";
 import ButtonPreloader from "@/components/ButtonPreloader.vue";
+import { mapActions } from "vuex";
 
 import axios from "axios";
 
@@ -41,9 +52,15 @@ export default {
       email: "",
       password: "",
       userLoggedIn: false,
+      showPassword: false,
+      loginError: "",
     };
   },
   methods: {
+    ...mapActions(["set_user"]),
+    togglePassword() {
+      this.showPassword = !this.showPassword;
+    },
     async loginUser() {
       console.log("Work ode");
       // Send a POST request
@@ -59,7 +76,7 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("Success!!");
-            console.log(res);
+            this.set_user(res.data);
             this.userLoggedIn = false;
             this.$router.push("/");
           } else {
@@ -68,14 +85,9 @@ export default {
         })
         .catch((err) => {
           this.userLoggedIn = false;
-          console.log(err);
+          this.loginError = err.response.data.non_field_errors;
         });
     },
-  },
-  mounted() {
-    console.log(this.$store.state.user);
-    this.$store.commit("loginUser", "Oluwafemi");
-    console.log(this.$store.state.user);
   },
 };
 </script>
@@ -135,5 +147,21 @@ export default {
 
 .link:hover {
   color: var(--text);
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+.form-group i {
+  position: absolute;
+  font-size: 17px;
+  cursor: pointer;
+  right: 10px;
+  top: 13px;
 }
 </style>

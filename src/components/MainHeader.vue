@@ -16,15 +16,18 @@
           <router-link @click="hideNav" to="/cart" class="desktop-cart">
             <i class="fal fa-shopping-bag"></i>
           </router-link>
-          <router-link @click="hideNav" to="/login" class="auth-link"
-            >Login</router-link
-          >
-          <router-link @click="hideNav" to="/signup" class="auth-link">
-            <action-button>Sign Up</action-button>
-          </router-link>
-          <router-link @click="hideNav" to="/" class="auth-link"
-            >Logout</router-link
-          >
+          <template v-if="!user">
+            <router-link @click="hideNav" to="/login" class="auth-link"
+              >Login</router-link
+            >
+            <router-link @click="hideNav" to="/signup" class="auth-link">
+              <action-button>Sign Up</action-button>
+            </router-link>
+          </template>
+
+          <button class="log-out auth-link" @click="logout" v-else>
+            Logout
+          </button>
         </div>
 
         <div class="mobile-menu">
@@ -39,7 +42,9 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import ActionButton from "./ActionButton.vue";
+
 export default {
   components: { ActionButton },
   name: "MainHeader",
@@ -52,12 +57,21 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["remove_user"]),
     showNav() {
       this.showSideNav = true;
     },
     hideNav() {
       this.showSideNav = false;
     },
+    logout() {
+      this.remove_user();
+      this.$router.push("/login");
+      console.log(this.user);
+    },
+  },
+  computed: {
+    ...mapState(["user"]),
   },
 };
 </script>
@@ -86,13 +100,18 @@ header {
   letter-spacing: 2px;
 }
 
-.nav__links a {
+.nav__links a,
+.log-out {
   padding-inline: 15px;
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--dark-blue);
   transition: all 0.25s ease-in-out;
   line-height: 2rem;
+}
+
+.nav__links .log-out {
+  background-color: transparent;
 }
 
 a.active__page,
@@ -183,12 +202,15 @@ a.active__page,
     right: 0;
   }
 
-  .nav__links a {
+  .nav__links a,
+  .log-out {
     padding: 0.5rem 0;
     font-size: 1.8rem;
-    width: 100%;
   }
 
+  .nav__links a {
+    width: 100%;
+  }
   .nav__links a:hover::after {
     width: 2.5rem;
   }

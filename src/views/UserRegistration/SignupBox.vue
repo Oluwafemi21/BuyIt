@@ -123,9 +123,10 @@
 </template>
 
 <script>
-import axios from "axios";
 import ActionButton from "@/components/ActionButton.vue";
 import ButtonPreloader from "@/components/ButtonPreloader.vue";
+import axios from "axios";
+
 export default {
   components: { ActionButton, ButtonPreloader },
   name: "SignUpBox",
@@ -202,7 +203,6 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             console.log("Success!!");
-            console.log(res);
             this.userCreated = false;
             this.$router.push("/login");
           } else {
@@ -402,19 +402,6 @@ form .form-line {
   margin-top: 6px;
   font-size: 13px;
 }
-
-.weak {
-  color: #ff0000;
-}
-
-.medium {
-  color: #ffc107;
-}
-
-.strong {
-  color: #4caf50;
-}
-
 /* Responsiveness */
 
 @media (max-width: 768px) {
