@@ -6,7 +6,7 @@
   />
   <section class="cart-section">
     <div class="container">
-      <section v-if="loggedIn">
+      <section>
         <div class="cart-details">
           <table>
             <thead>
@@ -20,53 +20,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><i class="far fa-times-circle"></i></td>
-                <td><div class="img"></div></td>
-                <td>Classic White Sneakers</td>
-                <td>$78.00</td>
+              <tr v-for="(item, index) in cart" :key="index">
+                <td>
+                  <i class="far fa-times-circle" @click="deleteItem(index)"></i>
+                </td>
+                <td>
+                  <img :src="item.images[0]" :alt="item.brand" class="img" />
+                </td>
+                <td>{{ item.brand }}</td>
+                <td>{{ item.price.toFixed(2) }}</td>
                 <td>
                   <input
                     type="number"
-                    value="1"
+                    :value="item.quantity"
                     placeholder="QTY"
                     min="1"
                     max="10"
                   />
                 </td>
-                <td>$78.00</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-times-circle"></i></td>
-                <td><div class="img"></div></td>
-                <td>Classic White Sneakers</td>
-                <td>$78.00</td>
-                <td>
-                  <input
-                    type="number"
-                    value="1"
-                    placeholder="QTY"
-                    min="1"
-                    max="10"
-                  />
-                </td>
-                <td>$78.00</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-times-circle"></i></td>
-                <td><div class="img"></div></td>
-                <td>Classic White Sneakers</td>
-                <td>$78.00</td>
-                <td>
-                  <input
-                    type="number"
-                    value="1"
-                    placeholder="QTY"
-                    min="1"
-                    max="10"
-                  />
-                </td>
-                <td>$78.00</td>
+                <td>{{ (item.quantity * item.price).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
@@ -104,7 +76,7 @@
           </div>
         </div>
       </section>
-      <div v-else class="no-cart">
+      <!-- <div class="no-cart">
         <div class="no-cart-text">
           <img src="@/assets/images/empty-cart.svg" alt="empty-cart" />
           <h3>Your cart is empty!</h3>
@@ -116,7 +88,7 @@
         <router-link to="/login">
           <action-button btnvalue="Start Shopping" />
         </router-link>
-      </div>
+      </div> -->
     </div>
   </section>
   <main-footer />
@@ -128,13 +100,18 @@ import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
+import { mapState } from "vuex";
+
 export default {
   components: { SubHeader, ActionButton, MainHeader, MainFooter },
   name: "CartView",
-  data() {
-    return {
-      loggedIn: false,
-    };
+  methods: {
+    deleteItem(index) {
+      this.cart = this.cart.filter((item) => item.id !== this.cart[index].id);
+    },
+  },
+  computed: {
+    ...mapState(["cart"]),
   },
 };
 </script>
@@ -162,7 +139,7 @@ export default {
   height: 70px;
   width: 70px;
   margin-inline: auto;
-  background-color: black;
+  object-fit: contain;
 }
 
 table {

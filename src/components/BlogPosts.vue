@@ -1,7 +1,7 @@
 <template>
   <div class="post-container">
     <h1>{{ date }}</h1>
-    <div class="blog-img"></div>
+    <img :src="image_url" :alt="title" class="blog-img" />
     <article>
       <h4>{{ title }}</h4>
       <p>{{ content }}</p>
@@ -13,11 +13,7 @@
 <script>
 export default {
   name: "BlogPosts",
-  props: {
-    date: String,
-    title: String,
-    content: String,
-  },
+  props: ["date", "image_url", "title", "content"],
 };
 </script>
 
@@ -42,9 +38,10 @@ export default {
 
 .blog-img {
   width: 50%;
-  height: 40vh;
-  background-color: black;
-  z-index: 1;
+  height: 45vh;
+  z-index: 2;
+  object-fit: cover;
+  object-position: center;
 }
 
 article h4 {

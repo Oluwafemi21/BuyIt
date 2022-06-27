@@ -3,29 +3,12 @@
   <sub-header heading="#Blog" subHeading="Read our latest blog posts" />
   <div class="container">
     <blog-posts
-      date="13/01"
-      title="The Cotton Jersey Zip-Up Hoodie"
-      content="Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard..."
-    />
-    <blog-posts
-      date="13/04"
-      title="How to style a Quiff"
-      content="Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard..."
-    />
-    <blog-posts
-      date="12/01"
-      title="Must-Have Skater Girl Items"
-      content="Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard..."
-    />
-    <blog-posts
-      date="16/01"
-      title="Run-Way Inspired Trends"
-      content="Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard..."
-    />
-    <blog-posts
-      date="10/03"
-      title="AW20 Menswear Trends"
-      content="Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard..."
+      v-for="(blog, index) in blogs"
+      :key="index"
+      :date="blog.date"
+      :image_url="blog.img"
+      :title="blog.title"
+      :content="blog.content"
     />
   </div>
   <page-index />
@@ -42,6 +25,47 @@ import MainFooter from "@/components/MainFooter.vue";
 export default {
   components: { SubHeader, BlogPosts, PageIndex, MainHeader, MainFooter },
   name: "BlogView",
+  data() {
+    return {
+      blogs: [
+        {
+          date: "13/01",
+          img: require("@/assets/images/blog/b1.jpg"),
+          title: "The Cotton Jersey Zip-Up Hoodie",
+          content:
+            "Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard...",
+        },
+        {
+          date: "13/04",
+          img: require("@/assets/images/blog/b2.jpg"),
+          title: "How to style a Quiff",
+          content:
+            "Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard...",
+        },
+        {
+          date: "12/01",
+          img: require("@/assets/images/blog/b3.jpg"),
+          title: "Must-Have Skater Girl Items",
+          content:
+            "Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard...",
+        },
+        {
+          date: "16/01",
+          img: require("@/assets/images/blog/b4.jpg"),
+          title: "Run-Way Inspired Trends",
+          content:
+            "Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard...",
+        },
+        {
+          date: "06/07",
+          img: require("@/assets/images/blog/b6.jpg"),
+          title: "Mixing The Right Colors in 2022",
+          content:
+            "From the beginning of the year we have had customers ask our designers how to mix and get perfect colors ...",
+        },
+      ],
+    };
+  },
 };
 </script>
 

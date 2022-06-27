@@ -21,16 +21,22 @@
         <span>Home / {{ product.brand }}</span>
         <h4>{{ product.name }}</h4>
         <h4>{{ formattedPrice }}</h4>
-        <select name="size" id="">
+        <select v-model="size">
           <option>Select Size</option>
-          <option value="M">Medium</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-          <option value="S">Small</option>
+          <option>Medium</option>
+          <option>XL</option>
+          <option>XXL</option>
+          <option>Small</option>
         </select>
         <div class="add-to-cart">
-          <input type="number" value="1" placeholder="QTY" min="1" max="10" />
-          <action-button btnvalue="Add To Cart" />
+          <input
+            type="number"
+            placeholder="QTY"
+            min="1"
+            max="10"
+            v-model="quantity"
+          />
+          <action-button btnvalue="Add To Cart" @click="addItemToCart" />
         </div>
         <h4>Product Details</h4>
         <p class="product-description">
@@ -58,23 +64,7 @@
       </div>
     </div> -->
 
-    <div class="preloader" v-else>
-      <div class="lds-spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <p>Loading Product...</p>
-    </div>
+    <product-preloader v-else> Loading Product... </product-preloader>
   </section>
 </template>
 
@@ -83,6 +73,8 @@
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
+import ProductPreloader from "@/components/ProductPreloader.vue";
+import { mapActions, mapState } from "vuex";
 
 import axios from "axios";
 
@@ -92,20 +84,34 @@ export default {
     ProductCard,
     ActionButton,
     MainHeader,
+    ProductPreloader,
   },
   data() {
     return {
       activeImage: "",
       product: [],
       loaded: false,
+      size: "Select Size",
+      quantity: 1,
     };
   },
   methods: {
+    ...mapActions(["add_to_cart"]),
     setActiveImage(image) {
       this.activeImage = this.product.images[image];
     },
+    addItemToCart() {
+      let item = {
+        ...this.product,
+        quantity: this.quantity,
+        size: this.size,
+      };
+      this.add_to_cart(item);
+      console.log(`${item.name} has been added to cart successfully`);
+    },
   },
   computed: {
+    ...mapState(["user", "cart"]),
     formattedPrice() {
       return this.product.currency + " " + this.product.price.toFixed(2);
     },
@@ -128,6 +134,7 @@ export default {
   justify-content: space-between;
   gap: 5rem;
   padding-bottom: 2rem;
+  margin-top: 10px;
 }
 
 .image-section {
@@ -145,13 +152,15 @@ export default {
 #back {
   padding: 0.5rem 1.5rem;
   font-size: 2rem;
-  text-align: center;
   border: none;
   border-radius: 6px;
   color: white;
   font-weight: 600;
   background-color: var(--dark-blue);
   transition: opacity 0.25s;
+  display: grid;
+  place-content: center;
+  width: fit-content;
 }
 
 #back:hover {

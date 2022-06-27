@@ -13,6 +13,10 @@ const store = createStore({
         },
         logoutUser(state) {
             state.user = null
+        },
+        addToCart(state, payload) {
+            state.cart = [...state.cart, payload]
+            console.log('item added to cart')
         }
     },
     actions: {
@@ -21,6 +25,9 @@ const store = createStore({
         },
         remove_user(context) {
             context.commit('logoutUser')
+        },
+        add_to_cart(context, payload) {
+            context.commit('addToCart', payload)
         }
     },
     plugins: [createPersistedState()],

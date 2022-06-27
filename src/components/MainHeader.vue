@@ -15,6 +15,9 @@
           <router-link @click="hideNav" to="/contact">Contact</router-link>
           <router-link @click="hideNav" to="/cart" class="desktop-cart">
             <i class="fal fa-shopping-bag"></i>
+            <div class="qty" v-if="cart.length >= 1">
+              <span>{{ cart.length }}</span>
+            </div>
           </router-link>
           <template v-if="!user">
             <router-link @click="hideNav" to="/login" class="auth-link"
@@ -31,8 +34,11 @@
         </div>
 
         <div class="mobile-menu">
-          <router-link to="/cart">
+          <router-link to="/cart" class="mobile-cart">
             <i class="fal fa-shopping-bag"></i>
+            <div class="qty" v-if="cart.length >= 1">
+              <span>{{ cart.length }}</span>
+            </div>
           </router-link>
           <i class="fas fa-bars" @click="showNav"></i>
         </div>
@@ -71,7 +77,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "cart"]),
   },
 };
 </script>
@@ -155,6 +161,7 @@ a.active__page,
 
 .desktop-cart {
   display: initial;
+  position: relative;
 }
 
 .mobile-menu {
@@ -167,6 +174,21 @@ a.active__page,
   cursor: pointer;
 }
 
+.qty {
+  height: 18px;
+  width: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--dark-blue);
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  position: absolute;
+  top: -4px;
+  right: 4px;
+}
 /* Media Query */
 
 @media (max-width: 799px) {
@@ -225,6 +247,13 @@ a.active__page,
 
   .desktop-cart {
     display: none;
+  }
+
+  .mobile-cart {
+    position: relative;
+  }
+  .qty {
+    align-items: center;
   }
 }
 </style>

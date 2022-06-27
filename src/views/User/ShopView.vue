@@ -21,8 +21,10 @@
     </div>
     <product-preloader v-else> Loading Products... </product-preloader>
   </div>
-  <page-index />
-  <main-footer />
+  <template v-if="loaded">
+    <page-index />
+    <main-footer />
+  </template>
 </template>
 
 

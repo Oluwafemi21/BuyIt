@@ -3,7 +3,7 @@
   <sub-header heading="#WhoWeAre" subHeading="Get to know us" />
   <div class="container">
     <article>
-      <div class="about-img"></div>
+      <img src="@/assets/images/a6.jpg" class="about-img" alt="Who we are" />
       <div class="about-text">
         <h1>Who We Are ?</h1>
         <p>
@@ -48,7 +48,7 @@ article {
 .about-img {
   height: 50vh;
   width: 50%;
-  background-color: black;
+  object-fit: cover;
 }
 
 .about-text {
