@@ -107,7 +107,7 @@ export default {
         size: this.size,
       };
       this.add_to_cart(item);
-      console.log(`${item.name} has been added to cart successfully`);
+      this.$router.push("/cart");
     },
   },
   computed: {

@@ -213,6 +213,7 @@ a.active__page,
     top: 0;
     right: -55%;
     width: 55%;
+    z-index: 2;
     padding: 2rem 3rem;
     background-color: white;
     height: 100%;
@@ -251,6 +252,7 @@ a.active__page,
 
   .mobile-cart {
     position: relative;
+    z-index: 1;
   }
   .qty {
     align-items: center;

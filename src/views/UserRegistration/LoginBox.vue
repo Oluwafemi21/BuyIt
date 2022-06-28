@@ -62,7 +62,6 @@ export default {
       this.showPassword = !this.showPassword;
     },
     async loginUser() {
-      console.log("Work ode");
       // Send a POST request
       this.userLoggedIn = true;
       await axios({

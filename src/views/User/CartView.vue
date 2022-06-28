@@ -6,7 +6,7 @@
   />
   <section class="cart-section">
     <div class="container">
-      <section>
+      <section v-if="cart.length">
         <div class="cart-details">
           <table>
             <thead>
@@ -27,18 +27,22 @@
                 <td>
                   <img :src="item.images[0]" :alt="item.brand" class="img" />
                 </td>
-                <td>{{ item.brand }}</td>
-                <td>{{ item.price.toFixed(2) }}</td>
+                <td>{{ item.brand }}({{ item.size }})</td>
+                <td>{{ item.currency }} {{ item.price.toFixed(2) }}</td>
                 <td>
                   <input
                     type="number"
-                    :value="item.quantity"
+                    v-model="item.quantity"
                     placeholder="QTY"
                     min="1"
                     max="10"
+                    @input="updateTotalPrice(item)"
                   />
                 </td>
-                <td>{{ (item.quantity * item.price).toFixed(2) }}</td>
+                <td>
+                  {{ item.currency }}
+                  {{ (item.quantity * item.price).toFixed(2) }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -58,7 +62,7 @@
               <thead>
                 <tr>
                   <td>Cart Total</td>
-                  <td>$335.00</td>
+                  <td>NGN {{ subtotal.toFixed(2) }}</td>
                 </tr>
               </thead>
               <tbody>
@@ -68,7 +72,9 @@
                 </tr>
                 <tr>
                   <td><strong>Total</strong></td>
-                  <td><strong>$335.00</strong></td>
+                  <td>
+                    <strong>NGN {{ subtotal.toFixed(2) }}</strong>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -76,7 +82,7 @@
           </div>
         </div>
       </section>
-      <!-- <div class="no-cart">
+      <div class="no-cart" v-else>
         <div class="no-cart-text">
           <img src="@/assets/images/empty-cart.svg" alt="empty-cart" />
           <h3>Your cart is empty!</h3>
@@ -85,10 +91,10 @@
             our latest products.
           </p>
         </div>
-        <router-link to="/login">
+        <router-link to="/shop">
           <action-button btnvalue="Start Shopping" />
         </router-link>
-      </div> -->
+      </div>
     </div>
   </section>
   <main-footer />
@@ -100,18 +106,39 @@ import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
-import { mapState } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   components: { SubHeader, ActionButton, MainHeader, MainFooter },
   name: "CartView",
+  data() {
+    return {
+      total: 0,
+    };
+  },
   methods: {
+    ...mapActions(["delete_item", "update_quantity"]),
     deleteItem(index) {
-      this.cart = this.cart.filter((item) => item.id !== this.cart[index].id);
+      this.delete_item(index);
+      console.log("Item has been successfully removed");
+    },
+
+    // update total price of cart and increase the quantity of product in cart
+    updateTotalPrice(item) {
+      this.update_quantity(item);
+      this.cart.forEach((item) => {
+        this.total += item.quantity * item.price;
+      });
     },
   },
   computed: {
     ...mapState(["cart"]),
+    ...mapGetters(["subtotal"]),
+  },
+  mounted() {
+    this.cart.forEach((item) => {
+      this.total += item.quantity * item.price;
+    });
   },
 };
 </script>
