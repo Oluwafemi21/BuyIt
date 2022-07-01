@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from "@/store/store"
 import HomeView from "../views/User/HomeView.vue";
-
 const routes = [
   {
     path: "/",
@@ -52,6 +52,18 @@ const routes = [
     component: () => import("../views/User/CartView.vue"),
   },
   {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../views/User/CheckoutView.vue"),
+    beforeEnter: (to, from, next) => {
+      if (store.state.user) {
+        next();
+      } else {
+        next("/login");
+      }
+    }
+  },
+  {
     path: '/cart/:id',
     name: 'cartItem',
     component: () => import("../views/User/CartItemView.vue"),
@@ -89,6 +101,7 @@ const routes = [
 
 ];
 
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
@@ -101,5 +114,18 @@ const router = createRouter({
   }
 });
 
+// Method 2 of setting navigation guard
+
+// const openResources = ['home', 'login', 'signup', 'forgot-password', 'about', 'shop',
+//   'blog', 'contact', 'cart', 'cartItem'];
+// router.beforeEach((to, from, next) => {
+//   if (openResources.includes(to.name)) {
+//     next()
+//   } else if (store.state.user) {
+//     next()
+//   } else {
+//     next('/login')
+//   }
+// })
 
 export default router;

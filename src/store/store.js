@@ -9,7 +9,6 @@ const store = createStore({
     mutations: {
         loginUser(state, payload) {
             state.user = payload;
-            console.log("user state changed: ", state.user);
         },
         logoutUser(state) {
             state.user = null;
@@ -44,13 +43,12 @@ const store = createStore({
         },
         deleteItem(state, payload) {
             let index = state.cart.indexOf(payload);
-            state.cart.splice(index, 1)
+            state.cart.splice(index, 1);
         },
-        //update the quantity of the item in the cart
         updateQuantity(state, payload) {
             // increase the quantity of the item in the cart
             if (payload.quantity > 0) {
-                console.log(payload)
+                console.log(payload, 'Item quantity was added')
                 let item = state.cart.find(
                     (item) =>
                         (item._id === payload._id && item.size === payload.size)
