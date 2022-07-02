@@ -55,6 +55,7 @@ section {
 .container {
     width: 85%;
     margin-inline: auto;
+    max-width: 1440px;
 }
 
 a {

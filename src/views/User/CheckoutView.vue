@@ -10,7 +10,7 @@
                 <input type="text" placeholder="Enter your coupon code" />
                 <action-button>Apply</action-button>
             </div>
-            <form class="billing-info">
+            <form class="billing-info" @submit.prevent="placeOrder">
                 <div class="form">
                     <h4>Billing Address</h4>
                     <div class="form-group">
@@ -33,10 +33,7 @@
                             type="text"
                             placeholder="House number and Street number"
                             required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Appartments, suite, unit etc..."
+                            v-model="userAddress"
                         />
                     </div>
                     <div class="form-group">
@@ -45,8 +42,8 @@
                             <input type="text" required />
                         </div>
                         <div class="form-control">
-                            <label>State / County </label>
-                            <input type="text" required />
+                            <label>State / County *</label>
+                            <input type="text" required v-model="userState" />
                         </div>
                     </div>
                     <div class="form-control">
@@ -101,11 +98,7 @@
                             <!-- End .summary-total -->
                         </tbody>
                     </table>
-                    <button
-                        class="submit"
-                        :class="{ payment: !noOrder }"
-                        @click="noOrder = !noOrder"
-                    >
+                    <button class="submit" :class="{ payment: !noOrder }">
                         <template v-if="noOrder">
                             <span>Place Order</span>
                             <div class="icon">
@@ -118,6 +111,13 @@
             </form>
         </div>
     </section>
+    <success-modal
+        @close-modal="closeModal"
+        :price="price"
+        :email="this.user.email"
+        :reference="referenceMessage"
+        v-if="showModal"
+    />
     <main-footer />
 </template>
 
@@ -127,12 +127,21 @@ import MainFooter from "@/components/MainFooter.vue";
 import ButtonPreloader from "@/components/ButtonPreloader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
+import SuccessModal from "@/components/SuccessModal.vue";
 
 import { mapState, mapGetters } from "vuex";
+import axios from "axios";
+
 export default {
     data() {
         return {
             noOrder: true,
+            userState: "",
+            userAddress: "",
+            referenceMessage: "",
+            price: "",
+            showModal: false,
+            email: "",
         };
     },
     components: {
@@ -141,10 +150,49 @@ export default {
         ButtonPreloader,
         SubHeader,
         ActionButton,
+        SuccessModal,
     },
     computed: {
-        ...mapState(["cart"]),
+        ...mapState(["user", "cart"]),
         ...mapGetters(["subtotal"]),
+    },
+    methods: {
+        async placeOrder() {
+            this.noOrder = false;
+            await axios
+                .post(
+                    "https://thegorana.herokuapp.com/orders/",
+                    {
+                        orders: this.cart.map((item) => {
+                            return {
+                                product_id: item._id,
+                                quantity: item.quantity,
+                                size: item.size,
+                            };
+                        }),
+                        state: this.userState,
+                        address: this.userAddress,
+                    },
+                    {
+                        headers: {
+                            Authorization: `${this.user.token}`,
+                        },
+                    }
+                )
+                .then((response) => {
+                    this.referenceMessage = response.data.transaction_reference;
+                    this.price = response.data.price;
+                    this.noOrder = true;
+                    this.showModal = true;
+                })
+                .catch((error) => {
+                    this.noOrder = true;
+                    console.log(error);
+                });
+        },
+        closeModal() {
+            this.showModal = false;
+        },
     },
 };
 </script>

@@ -55,6 +55,9 @@ const store = createStore({
                 );
                 item.quantity = payload.quantity;
             }
+        },
+        emptyCart(state) {
+            state.cart = [];
         }
     },
     actions: {
@@ -72,6 +75,9 @@ const store = createStore({
         },
         update_quantity(context, payload) {
             context.commit("updateQuantity", payload);
+        },
+        clear_cart(context) {
+            context.commit("emptyCart");
         }
     },
     getters: {
