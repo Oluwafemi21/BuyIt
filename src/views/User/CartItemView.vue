@@ -22,12 +22,13 @@
                 <h4>{{ product.name }}</h4>
                 <h4>{{ formattedPrice }}</h4>
                 <select v-model="size">
-                    <option>Select Size</option>
+                    <option disabled>Select Size</option>
                     <option>Medium</option>
                     <option>XL</option>
                     <option>XXL</option>
                     <option>Small</option>
                 </select>
+                <p class="weak" v-if="validSize">Please select a size</p>
                 <div class="add-to-cart">
                     <input
                         type="number"
@@ -76,6 +77,7 @@ export default {
             loaded: false,
             size: "Select Size",
             quantity: 1,
+            validSize: false,
         };
     },
     methods: {
@@ -84,13 +86,17 @@ export default {
             this.activeImage = this.product.images[image];
         },
         addItemToCart() {
-            let item = {
-                ...this.product,
-                quantity: this.quantity,
-                size: this.size,
-            };
-            this.add_to_cart(item);
-            this.$router.push("/cart");
+            if (this.size === "Select Size") {
+                this.validSize = true;
+            } else {
+                let item = {
+                    ...this.product,
+                    quantity: this.quantity,
+                    size: this.size,
+                };
+                this.add_to_cart(item);
+                this.$router.push("/cart");
+            }
         },
     },
     computed: {

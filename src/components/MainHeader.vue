@@ -43,9 +43,43 @@
                         </router-link>
                     </template>
 
-                    <button class="log-out auth-link" @click="logout" v-else>
-                        Logout
-                    </button>
+                    <template v-else>
+                        <button class="log-out auth-link" @click="logout">
+                            Logout
+                        </button>
+                        <div class="nav-profile">
+                            <img
+                                :src="getHash"
+                                :alt="user.first_name + ' ' + user.last_name"
+                            />
+                            <span class="name"
+                                >&#128075; Hi,{{ user.first_name }}!</span
+                            >
+                            <i
+                                class="fas fa-chevron-down"
+                                @click="showDropDown = !showDropDown"
+                            ></i>
+                            <div class="dropdown" v-if="showDropDown">
+                                <div class="dropdown-profile">
+                                    <span>Signed in as</span>
+                                    <span class="dropdown-name">{{
+                                        user.first_name + " " + user.last_name
+                                    }}</span>
+                                </div>
+                                <router-link
+                                    :to="{ name: 'shop' }"
+                                    class="dropdown-link"
+                                >
+                                    <i class="fas fa-external-link"></i>
+                                    <span>Go to Shop</span>
+                                </router-link>
+                                <button @click="logout" class="dropdown-link">
+                                    <i class="fas fa-power-off"></i>
+                                    <span>Logout</span>
+                                </button>
+                            </div>
+                        </div>
+                    </template>
                 </div>
 
                 <div class="mobile-menu">
@@ -63,7 +97,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import ActionButton from "./ActionButton.vue";
 
 export default {
@@ -75,6 +109,7 @@ export default {
     data() {
         return {
             showSideNav: false,
+            showDropDown: false,
         };
     },
     methods: {
@@ -88,11 +123,11 @@ export default {
         logout() {
             this.remove_user();
             this.$router.push("/login");
-            console.log(this.user);
         },
     },
     computed: {
         ...mapState(["user", "cart"]),
+        ...mapGetters(["getHash"]),
     },
 };
 </script>
@@ -170,7 +205,8 @@ a.active__page,
     width: 70%;
 }
 
-.nav__links .auth-link::after {
+.nav__links .auth-link::after,
+.dropdown .dropdown-link::after {
     display: none;
 }
 
@@ -204,6 +240,76 @@ a.active__page,
     top: -4px;
     right: 4px;
 }
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.nav-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.nav-profile .name {
+    font-size: 1.8rem;
+}
+
+.nav-profile i {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.dropdown {
+    background-color: white;
+    z-index: 2;
+    border-radius: 8px;
+    border: 1px solid var(--grey-2);
+    position: absolute;
+    top: 35px;
+    right: 0;
+    transition: 0.25s;
+    width: 170px;
+}
+
+.dropdown-profile {
+    padding: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid var(--grey-2);
+}
+
+.dropdown .dropdown-link {
+    font-size: 1.6rem;
+    color: #222;
+    background-color: transparent;
+    padding: 10px;
+    width: 100%;
+    transition: background-color 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.dropdown .dropdown-link:hover {
+    color: var(--dark-green);
+}
+
+.dropdown-name {
+    font-weight: 500;
+}
+
+.log-out {
+    display: none;
+}
+
 /* Media Query */
 
 @media (max-width: 870px) {
@@ -271,6 +377,12 @@ a.active__page,
     }
     .qty {
         align-items: center;
+    }
+    .log-out {
+        display: initial;
+    }
+    .nav-profile {
+        display: none;
     }
 }
 </style>

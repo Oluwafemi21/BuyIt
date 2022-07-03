@@ -87,6 +87,11 @@ const store = createStore({
                 subtotal += item.price * item.quantity;
             });
             return subtotal;
+        },
+        getHash: state => {
+            var md5 = require('blueimp-md5/js/md5');
+            var hash = md5(state.user.email);
+            return `https://www.gravatar.com/avatar/` + hash + `?d=mp`;
         }
     },
     plugins: [createPersistedState()],
