@@ -4,8 +4,8 @@
         <div class="container">
             <div class="hero__text">
                 <h4>Trade-in-offer</h4>
-                <h2>Super value deals</h2>
-                <h1>On all products</h1>
+                <h1>Super value deals</h1>
+                <h2>On all products</h2>
                 <p>Save more with coupons & get up to 70% off!</p>
                 <router-link to="/shop">
                     <action-button btnvalue="Start Shopping" />
@@ -39,6 +39,7 @@ import NewsLetter from "@/components/NewsLetter.vue";
 import MainFooter from "@/components/MainFooter.vue";
 
 import axios from "axios";
+import { mapActions } from "vuex";
 
 export default {
     name: "HomeView",
@@ -46,6 +47,9 @@ export default {
         return {
             products: [],
         };
+    },
+    methods: {
+        ...mapActions(["set_products"]),
     },
     components: {
         ServiceSection,
@@ -60,20 +64,19 @@ export default {
     },
     computed: {
         featuredProducts() {
-            return this.products.slice(0, 8);
+            return this.products.slice(1, 5);
         },
         newArrivals() {
-            return this.products.slice(8, 16);
+            return this.products.slice(5, 9);
         },
     },
     async created() {
         let res1 = await axios.get("https://thegorana.herokuapp.com/products");
-        let res2 = await axios.get(
-            "https://thegorana.herokuapp.com/products/?page=2"
-        );
-        this.featured = res1.data.results.slice(0, 8);
-        this.newProducts = res2.data.results.slice(0, 8);
-        this.products = this.featured.concat(this.newProducts);
+        this.products = res1.data.results.map((product) => {
+            product.images[0] = product.images[0].replace("http", "https");
+            return product;
+        });
+        this.set_products(this.products);
     },
 };
 </script>

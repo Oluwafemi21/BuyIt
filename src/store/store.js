@@ -5,6 +5,7 @@ const store = createStore({
     state: {
         user: null,
         cart: [],
+        products: [],
     },
     mutations: {
         loginUser(state, payload) {
@@ -58,6 +59,9 @@ const store = createStore({
         },
         emptyCart(state) {
             state.cart = [];
+        },
+        setProducts(state, payload) {
+            state.products = payload
         }
     },
     actions: {
@@ -78,6 +82,9 @@ const store = createStore({
         },
         clear_cart(context) {
             context.commit("emptyCart");
+        },
+        set_products(context, payload) {
+            context.commit("setProducts", payload);
         }
     },
     getters: {

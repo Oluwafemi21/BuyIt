@@ -1,7 +1,7 @@
 <template>
     <section class="banner">
         <div class="container">
-            <h3>Discount Sales</h3>
+            <p>Discount Sales</p>
             <h2>Get up to 70% Off on All t-shirts and accessories!</h2>
             <router-link to="/shop" aria-label="Go to shop">
                 <button aria-label="Explore Now">Explore Now</button>
@@ -28,11 +28,14 @@ export default {
     padding-block: 40px;
 }
 
-h3 {
+p {
     padding-block: 1.4rem;
+    font-size: 2rem;
+    color:white;
 }
 
 .banner button {
+    margin-top:20px;
     padding: 14px 30px;
     letter-spacing: 0.5px;
     background-color: white;
@@ -47,7 +50,7 @@ h3 {
 }
 
 @media (max-width: 599px) {
-    h3   {
+    p {
         font-size: 2.8rem;
     }
 }

@@ -33,8 +33,8 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "League Spartan", "Segoe UI", Tahoma, Geneva, Verdana,
-        sans-serif;
+    font-family: "League Spartan", sans-serif;
+    /* font-display: swap; */
 }
 
 html {

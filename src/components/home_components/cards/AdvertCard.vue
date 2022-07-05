@@ -1,8 +1,10 @@
 <template>
     <article :class="backgroundImage">
-        <h4>{{ advertTitle }}</h4>
+        <h5>{{ advertTitle }}</h5>
         <p>{{ advertText }}</p>
-        <button v-if="haveButton" :aria-label="buttonText" >{{ buttonText }}</button>
+        <button v-if="haveButton" :aria-label="buttonText">
+            {{ buttonText }}
+        </button>
     </article>
 </template>
 
@@ -33,6 +35,10 @@ article {
     padding: 3rem;
     color: white;
     min-height: 40vh;
+}
+
+h5 {
+    font-size: 2rem;
 }
 
 .first {

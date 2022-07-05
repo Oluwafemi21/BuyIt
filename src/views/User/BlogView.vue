@@ -30,6 +30,7 @@ export default {
                 {
                     date: "13/01",
                     img: require("@/assets/images/blog/b1.webp"),
+                    priority: "high",
                     title: "The Cotton Jersey Zip-Up Hoodie",
                     content:
                         "Kickstarter man braid godard coloring book. Raclette waistcoast selfies yr wolf chartreuse hexagon irony, godard...",

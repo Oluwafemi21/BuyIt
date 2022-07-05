@@ -30,7 +30,7 @@ export default {};
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 65px);
   background-color: var(--dark-blue);
   z-index: 1;
   display: flex;

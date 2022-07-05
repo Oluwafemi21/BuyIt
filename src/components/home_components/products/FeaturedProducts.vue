@@ -1,6 +1,6 @@
 <template>
     <section class="products">
-        <h1>Featured Products</h1>
+        <h2>Featured Products</h2>
         <p class="highlight">The best selling products we have on sale.</p>
         <div class="product__container">
             <product-card
@@ -35,7 +35,7 @@ export default {
     text-align: center;
 }
 
-.products h1 {
+.products h2 {
     display: inline-block;
     margin-bottom: 10px;
 }
@@ -44,7 +44,7 @@ export default {
     font-size: 1.9rem;
 }
 
-.products h1::after {
+.products h2::after {
     content: "";
     display: block;
     position: relative;
@@ -72,7 +72,7 @@ export default {
 
 .product__container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     padding-block: 4rem;
 }
@@ -86,6 +86,7 @@ export default {
 @media (max-width: 599px) {
     .product__container {
         justify-content: center;
+        grid-template-columns: minmax(250px, 300px);
     }
 }
 </style>

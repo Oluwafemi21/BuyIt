@@ -1,5 +1,5 @@
 <template>
-    <button :aria-label="btnValue">
+    <button aria-label="button">
         {{ btnvalue }}
         <slot></slot>
     </button>

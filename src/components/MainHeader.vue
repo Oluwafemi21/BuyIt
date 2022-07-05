@@ -7,7 +7,19 @@
                 </router-link>
 
                 <div class="nav__links" :class="{ activeNav: showSideNav }">
-                    <i class="far fa-times close-btn" @click="hideNav"></i>
+                    <svg
+                        @click="hideNav"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1em"
+                        height="1em"
+                        fill="currentColor"
+                        class="bi bi-x-lg close-btn"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                        />
+                    </svg>
                     <router-link @click="hideNav" to="/">Home</router-link>
                     <router-link @click="hideNav" to="/shop">Shop</router-link>
                     <router-link @click="hideNav" to="/blog">Blog</router-link>
@@ -22,7 +34,18 @@
                         to="/cart"
                         class="desktop-cart"
                     >
-                        <i class="fal fa-shopping-bag"></i>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            class="bi bi-bag"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                            />
+                        </svg>
                         <div class="qty" v-if="cart.length >= 1">
                             <span>{{ cart.length }}</span>
                         </div>
@@ -57,13 +80,28 @@
                                 :alt="user.first_name + ' ' + user.last_name"
                             />
                             <span class="name"
-                                >&#128075; Hi,{{ user.first_name }}!</span
+                                >&#128075; Hi, {{ user.first_name }}!</span
                             >
-                            <i
-                                class="fas fa-chevron-down"
-                                @click="showDropDown = !showDropDown"
-                            ></i>
-                            <div class="dropdown" v-if="showDropDown">
+
+                            <svg
+                                @mouseenter="showDropDown = !showDropDown"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                fill="currentColor"
+                                class="bi bi-chevron-down"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                                />
+                            </svg>
+                            <div
+                                class="dropdown"
+                                v-if="showDropDown"
+                                @mouseleave="showDropDown = !showDropDown"
+                            >
                                 <div class="dropdown-profile">
                                     <span>Signed in as</span>
                                     <span class="dropdown-name">{{
@@ -75,7 +113,23 @@
                                     class="dropdown-link"
                                     aria-label="Go to shop"
                                 >
-                                    <i class="fas fa-external-link"></i>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="1em"
+                                        height="1em"
+                                        fill="currentColor"
+                                        class="bi bi-box-arrow-up-right"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                                        />
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                                        />
+                                    </svg>
                                     <span>Go to Shop</span>
                                 </router-link>
                                 <button
@@ -83,7 +137,19 @@
                                     class="dropdown-link"
                                     aria-label="Logout"
                                 >
-                                    <i class="fas fa-power-off"></i>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="1em"
+                                        height="1em"
+                                        fill="currentColor"
+                                        class="bi bi-power dropdown-logout"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path d="M7.5 1v7h1V1h-1z" />
+                                        <path
+                                            d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"
+                                        />
+                                    </svg>
                                     <span>Logout</span>
                                 </button>
                             </div>
@@ -97,12 +163,37 @@
                         class="mobile-cart"
                         aria-label="Go to cart"
                     >
-                        <i class="fal fa-shopping-bag"></i>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            fill="currentColor"
+                            class="bi bi-bag"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                            />
+                        </svg>
                         <div class="qty" v-if="cart.length >= 1">
                             <span>{{ cart.length }}</span>
                         </div>
                     </router-link>
-                    <i class="fas fa-bars" @click="showNav"></i>
+
+                    <svg
+                        @click="showNav"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1em"
+                        height="1em"
+                        fill="currentColor"
+                        class="bi bi-list open-btn"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                        />
+                    </svg>
                 </div>
             </nav>
         </div>
@@ -234,7 +325,7 @@ a.active__page,
 
 .close-btn {
     display: none;
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     cursor: pointer;
 }
 
@@ -259,6 +350,7 @@ a.active__page,
     align-items: center;
     gap: 10px;
     position: relative;
+    margin-left: 15px;
 }
 
 .nav-profile img {
@@ -271,9 +363,10 @@ a.active__page,
     font-size: 1.8rem;
 }
 
-.nav-profile i {
-    font-size: 1.5rem;
+.nav-profile svg {
+    font-size: 1.8em;
     cursor: pointer;
+    font-weight: 900;
 }
 
 .dropdown {
@@ -295,6 +388,16 @@ a.active__page,
     flex-direction: column;
     gap: 8px;
     border-bottom: 1px solid var(--grey-2);
+}
+
+.dropdown svg {
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.dropdown .dropdown-logout {
+    font-size: 1.7rem;
 }
 
 .dropdown .dropdown-link {
@@ -328,14 +431,18 @@ a.active__page,
 @media (max-width: 870px) {
     .mobile-menu {
         display: flex;
-        align-items: center;
-        font-size: 1.9rem;
         gap: 1.5rem;
+        color: var(--text);
     }
 
-    .mobile-menu i {
+    .mobile-menu svg {
         cursor: pointer;
-        color: var(--text);
+        font-size: 2rem;
+    }
+
+    .mobile-menu .open-btn {
+        font-size: 2.4rem;
+        font-weight: 900;
     }
 
     .nav__links {
