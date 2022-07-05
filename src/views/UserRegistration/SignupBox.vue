@@ -115,19 +115,19 @@
                         <button-preloader v-if="userCreated" />
                         <span v-else>CREATE ACCOUNT</span>
                     </action-button>
-                    <div class="or">
+                    <!-- <div class="or">
                         <hr />
                         <span>OR</span>
                         <hr />
-                    </div>
-                    <router-link to="/"
+                    </div> -->
+                    <!-- <router-link to="/"
                         ><action-button
                             class="gmail-btn"
                             btnvalue="REGISTER WITH GMAIL"
                             ><img
                                 src="@/assets/images/google-icon.png"
                                 class="gmail-icon" /></action-button
-                    ></router-link>
+                    ></router-link> -->
                 </div>
                 <div class="form-footer">
                     <p>Already have an account?</p>

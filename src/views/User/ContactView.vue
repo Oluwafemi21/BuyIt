@@ -101,21 +101,21 @@ export default {
     return {
       employers: [
         {
-          image: require("@/assets/images/people/1.png"),
+          image: require("@/assets/images/people/1.webp"),
           name: "Mark Franklin",
           position: "Chief Execution Officer (CEO)",
           phone: "+1-305-984-5462",
           email: "contact@gmail.com",
         },
         {
-          image: require("@/assets/images/people/2.png"),
+          image: require("@/assets/images/people/2.webp"),
           name: "William Smith",
           position: "Senior Marketing Manager",
           phone: "+1-305-753-3668",
           email: "contact@yahoo.com",
         },
         {
-          image: require("@/assets/images/people/3.png"),
+          image: require("@/assets/images/people/3.webp"),
           name: "Emma Stone",
           position: "Warehouse Manager",
           phone: "+1-305-484-7492",

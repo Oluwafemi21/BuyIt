@@ -1,6 +1,6 @@
 <template>
   <div class="product__card">
-    <img :src="image_url" class="product__image" />
+    <img :src="image_url" :alt="brand" class="product__image" />
     <div class="product__header">
       <span class="brand">{{ brand }}</span>
       <span class="product__qty">{{
@@ -13,8 +13,8 @@
     </div>
     <div class="price">
       <span>{{ formattedPrice }}</span>
-      <router-link :to="'/cart/' + productId">
-        <button class="cart"><i class="fal fa-shopping-cart"></i></button>
+      <router-link :to="'/cart/' + productId" aria-label="View Item">
+        <button class="cart" aria-label="Add to Cart"><i class="fal fa-shopping-cart"></i></button>
       </router-link>
     </div>
   </div>
@@ -48,7 +48,6 @@ export default {
   transition: transform 0.05s ease-in;
   padding: 15px;
   text-align: left;
-  cursor: pointer;
   border-radius: 15px;
   color: #222;
 }
@@ -110,6 +109,7 @@ export default {
 }
 
 .cart {
+  cursor:pointer;
   height: 35px;
   width: 35px;
   color: var(--dark-green);

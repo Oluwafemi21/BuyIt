@@ -44,7 +44,11 @@
                     </template>
 
                     <template v-else>
-                        <button class="log-out auth-link" @click="logout">
+                        <button
+                            class="log-out auth-link"
+                            @click="logout"
+                            aria-label="Logout"
+                        >
                             Logout
                         </button>
                         <div class="nav-profile">
@@ -69,11 +73,16 @@
                                 <router-link
                                     :to="{ name: 'shop' }"
                                     class="dropdown-link"
+                                    aria-label="Go to shop"
                                 >
                                     <i class="fas fa-external-link"></i>
                                     <span>Go to Shop</span>
                                 </router-link>
-                                <button @click="logout" class="dropdown-link">
+                                <button
+                                    @click="logout"
+                                    class="dropdown-link"
+                                    aria-label="Logout"
+                                >
                                     <i class="fas fa-power-off"></i>
                                     <span>Logout</span>
                                 </button>
@@ -83,7 +92,11 @@
                 </div>
 
                 <div class="mobile-menu">
-                    <router-link to="/cart" class="mobile-cart">
+                    <router-link
+                        to="/cart"
+                        class="mobile-cart"
+                        aria-label="Go to cart"
+                    >
                         <i class="fal fa-shopping-bag"></i>
                         <div class="qty" v-if="cart.length >= 1">
                             <span>{{ cart.length }}</span>

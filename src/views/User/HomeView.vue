@@ -85,7 +85,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: calc(100vh - 65px);
-    background-image: url("@/assets/images/hero4.png");
+    background-image: url("@/assets/images/hero4.webp");
     background-position: 60% 30%;
     background-size: cover;
 }

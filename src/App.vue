@@ -96,7 +96,7 @@ h6 {
 
 p {
     font-size: 1.7rem;
-    color: #9f9f92;
+    color: #535348;
     font-weight: 400;
     padding-block: 1rem;
 }
