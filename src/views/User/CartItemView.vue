@@ -106,7 +106,6 @@ export default {
                     size: this.size,
                 };
                 this.add_to_cart(item);
-                this.$router.push("/cart");
             }
         },
     },

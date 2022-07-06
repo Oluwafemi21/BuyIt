@@ -62,10 +62,10 @@ export default {
         ...mapActions(["clear_cart"]),
         onSuccessfulPayment: function (response) {
             this.clear_cart();
-            this.$router.push("/");
+            this.$router.push("/cart");
         },
         onCancelledPayment: function () {
-            this.$router.push("/checkout");
+            this.$router.push("/cart");
         },
     },
     emits: ["close-modal"],
