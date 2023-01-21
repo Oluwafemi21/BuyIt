@@ -1,5 +1,5 @@
 <template>
-    <button aria-label="button">
+    <button aria-label="button" v-bind="$attrs">
         {{ btnvalue }}
         <slot></slot>
     </button>

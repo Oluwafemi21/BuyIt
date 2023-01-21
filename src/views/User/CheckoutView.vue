@@ -161,7 +161,7 @@ export default {
             this.noOrder = false;
             await axios
                 .post(
-                    "https://thegorana.herokuapp.com/orders/",
+                    "https://gorana.onrender.com/orders/",
                     {
                         orders: this.cart.map((item) => {
                             return {

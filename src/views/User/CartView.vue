@@ -151,7 +151,6 @@ export default {
         ...mapActions(["delete_item", "update_quantity"]),
         deleteItem(index) {
             this.delete_item(index);
-            console.log("Item has been successfully removed");
         },
 
         // update total price of cart and increase the quantity of product in cart

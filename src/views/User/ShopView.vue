@@ -5,7 +5,7 @@
         subHeading="Save more with coupons up to 70% off"
     />
     <div class="container">
-        <div class="product__container">
+        <div class="product__container" v-if="products">
             <product-card
                 v-for="(product, index) in products.slice(1, 9)"
                 :key="index"
@@ -19,6 +19,7 @@
                 :in_stock="product.in_stock"
             />
         </div>
+        <product-preloader v-else> Loading product... </product-preloader>
     </div>
 
     <page-index />
@@ -28,6 +29,7 @@
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
+import ProductPreloader from "@/components/ProductPreloader.vue";
 import PageIndex from "@/components/PageIndex.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
@@ -42,6 +44,12 @@ export default {
         PageIndex,
         MainHeader,
         MainFooter,
+        ProductPreloader,
+    },
+    data() {
+        return {
+            loading: true,
+        };
     },
     computed: {
         ...mapState(["products"]),

@@ -117,7 +117,7 @@ export default {
     },
     async created() {
         let res = await axios.get(
-            `https://thegorana.herokuapp.com/products/${this.$route.params.id}`
+            `https://gorana.onrender.com/products/${this.$route.params.id}`
         );
         this.product = res.data;
         this.loaded = true;

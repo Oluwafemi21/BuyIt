@@ -277,7 +277,7 @@ export default {
             this.userCreated = true;
             await axios({
                 method: "post",
-                url: "https://thegorana.herokuapp.com/users/register/",
+                url: "https://gorana.onrender.com/users/register/",
                 data: {
                     first_name: this.firstName,
                     last_name: this.lastName,
@@ -289,7 +289,6 @@ export default {
             })
                 .then((res) => {
                     if (res.status == 200) {
-                        console.log("Success!!");
                         this.userCreated = false;
                         this.$router.push("/login");
                     } else {

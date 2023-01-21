@@ -123,7 +123,7 @@ export default {
             this.userLoggedIn = true;
             await axios({
                 method: "post",
-                url: "https://thegorana.herokuapp.com/users/login/",
+                url: "https://gorana.onrender.com/users/login/",
                 data: {
                     email: this.email,
                     password: this.password,

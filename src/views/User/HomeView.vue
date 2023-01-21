@@ -71,7 +71,7 @@ export default {
         },
     },
     async created() {
-        let res1 = await axios.get("https://thegorana.herokuapp.com/products");
+        let res1 = await axios.get("https://gorana.onrender.com/products");
         this.products = res1.data.results.map((product) => {
             product.images[0] = product.images[0].replace("http", "https");
             return product;
