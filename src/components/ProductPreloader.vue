@@ -43,6 +43,7 @@ export default {};
 .preloader p {
     color: var(--dark-green);
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .lds-spinner {

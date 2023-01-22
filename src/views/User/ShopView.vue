@@ -5,9 +5,9 @@
         subHeading="Save more with coupons up to 70% off"
     />
     <div class="container">
-        <div class="product__container" v-if="products">
+        <div class="product__container" v-if="loaded">
             <product-card
-                v-for="(product, index) in products.slice(1, 9)"
+                v-for="(product, index) in products"
                 :key="index"
                 :productId="product._id"
                 :productName="product.name"
@@ -19,10 +19,11 @@
                 :in_stock="product.in_stock"
             />
         </div>
-        <product-preloader v-else> Loading product... </product-preloader>
+        <product-preloader v-else> Loading products... </product-preloader>
     </div>
 
-    <page-index />
+    <page-index @page-change="fetchNewPage" :total="total" />
+    <p>Page - {{ page }}</p>
     <main-footer />
 </template>
 
@@ -34,7 +35,7 @@ import PageIndex from "@/components/PageIndex.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 
-import { mapState } from "vuex";
+import axios from "axios";
 
 export default {
     name: "ShopView",
@@ -44,15 +45,44 @@ export default {
         PageIndex,
         MainHeader,
         MainFooter,
-        ProductPreloader,
+        "product-preloader": ProductPreloader,
     },
     data() {
         return {
-            loading: true,
+            products: [],
+            page: 1,
+            loaded: false,
+            total: 0,
         };
     },
-    computed: {
-        ...mapState(["products"]),
+    created() {
+        this.getProducts();
+    },
+    methods: {
+        getProducts() {
+            this.loaded = false;
+            axios
+                .get(`https://gorana.onrender.com/products?page=${this.page}`)
+                .then((res) => {
+                    this.products = res.data.results.map((product) => {
+                        product.images[0] = product.images[0].replace(
+                            "http",
+                            "https"
+                        );
+                        return product;
+                    });
+                    this.total = res.data.total_pages;
+                    this.loaded = true;
+                })
+                .catch((err) => {
+                    console.log(err);
+                    this.loaded = false;
+                });
+        },
+        fetchNewPage(page) {
+            this.page = page;
+            this.getProducts();
+        },
     },
 };
 </script>

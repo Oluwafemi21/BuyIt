@@ -11,15 +11,11 @@
             <div class="about-text">
                 <h1>Who We Are ?</h1>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Corrupti amet iusto a esse eveniet nulla reiciendis
-                    blanditiis dolor molestias. Quibusdam alias consectetur id
-                    possimus ullam rerum soluta dolorem sit, veritatis, ipsam,
-                    dolores maiores perspiciatis nam explicabo! Labore
-                    repellendus dolore ab dicta, sapiente dignissimos quam
-                    libero dolorum deleniti esse recusandae consequuntur
-                    distinctio unde optio soluta, autem repudiandae! Hic id
-                    eaque nihil!
+                    We pride ourselves to our delivery time and customer
+                    satisfaction first approach. Our platform connects you to
+                    the best service providers in your area. We are a team of
+                    young and passionate individuals who are dedicated to
+                    providing you with the best service possible.
                 </p>
             </div>
         </article>
@@ -50,7 +46,6 @@ export default {
 <style scoped>
 article {
     display: flex;
-    align-items: center;
     gap: 4rem;
     margin-bottom: 2.5rem;
 }

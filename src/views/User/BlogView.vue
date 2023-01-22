@@ -11,18 +11,17 @@
             :content="blog.content"
         />
     </div>
-    <page-index />
+
     <main-footer />
 </template>
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import BlogPosts from "@/components/BlogPosts.vue";
-import PageIndex from "@/components/PageIndex.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 export default {
-    components: { SubHeader, BlogPosts, PageIndex, MainHeader, MainFooter },
+    components: { SubHeader, BlogPosts, MainHeader, MainFooter },
     name: "BlogView",
     data() {
         return {

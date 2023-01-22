@@ -149,7 +149,7 @@ export default {
 }
 
 #back {
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1.8rem;
     font-size: 2rem;
     border: none;
     border-radius: 6px;

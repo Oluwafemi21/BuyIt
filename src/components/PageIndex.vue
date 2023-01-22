@@ -1,6 +1,11 @@
 <template>
     <div class="pagination">
-        <action-button aria-label="prev page">
+        <action-button
+            aria-label="prev page"
+            value="prev"
+            :disabled="currentPage === 1"
+            @click="handleChange"
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -15,11 +20,25 @@
                 />
             </svg>
         </action-button>
-        <action-button btnvalue="1" />
-        <action-button btnvalue="2" />
-        <action-button btnvalue="3" />
+        <action-button
+            v-for="(page, index) in pages"
+            :key="index"
+            :btnvalue="`${page}`"
+            :value="page"
+            @click="handleChange"
+        />
         <action-button btnvalue="..." disabled />
-        <action-button aria-label="next page">
+        <action-button
+            :btnvalue="`${total}`"
+            :value="total"
+            @click="handleChange"
+        />
+        <action-button
+            aria-label="next page"
+            value="next"
+            :disabled="currentPage === total"
+            @click="handleChange"
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -41,7 +60,34 @@
 import ActionButton from "./ActionButton.vue";
 export default {
     components: { ActionButton },
+    props: {
+        total: {
+            type: Number,
+            required: true,
+        },
+    },
     name: "PageIndex",
+    data() {
+        return {
+            pages: [1, 2, 3],
+            currentPage: 1,
+        };
+    },
+    methods: {
+        handleChange(event) {
+            if (event.target.value === "prev") {
+                this.currentPage -= 1;
+                console.log("Prev", this.currentPage);
+                this.$emit("pageChange", this.currentPage);
+            } else if (event.target.value === "next") {
+                this.currentPage += 1;
+                this.$emit("pageChange", this.currentPage);
+            } else {
+                this.currentPage = parseInt(event.target.value);
+                this.$emit("pageChange", this.currentPage);
+            }
+        },
+    },
 };
 </script>
 
@@ -59,5 +105,10 @@ export default {
 .pagination button {
     font-weight: 600;
     height: 43px;
+}
+
+.pagination button[disabled] {
+    color: #6c757d;
+    cursor: not-allowed;
 }
 </style>
