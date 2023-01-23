@@ -1,8 +1,8 @@
 <template>
     <footer>
         <div class="container">
-            <router-link to="/">
-                <h3 class="logo">Buy-It</h3>
+            <router-link to="/" class="logo">
+                <h3>Buy-It</h3>
             </router-link>
             <div class="footer">
                 <div class="footer-col">
@@ -182,7 +182,8 @@ footer {
 }
 
 .logo {
-    padding-top: 2rem;
+    margin-block: 2rem;
+    display: inline-block;
 }
 
 .footer-col {

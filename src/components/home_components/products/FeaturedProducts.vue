@@ -2,7 +2,7 @@
     <section class="products">
         <h2>Featured Products</h2>
         <p class="highlight">The best selling products we have on sale.</p>
-        <div class="product__container">
+        <div class="product__container" v-if="featuredProducts">
             <product-card
                 v-for="(product, index) in featuredProducts"
                 :key="index"
@@ -16,15 +16,20 @@
                 :in_stock="product.in_stock"
             />
         </div>
+        <product-preloader type="inline" v-else>
+            Loading products...
+        </product-preloader>
     </section>
 </template>
 
 <script>
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
+import ProductPreloader from "@/components/preloaders/ProductPreloader.vue";
 export default {
     name: "FeaturedProducts",
     components: {
         ProductCard,
+        ProductPreloader,
     },
     props: ["featuredProducts"],
 };

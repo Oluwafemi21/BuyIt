@@ -124,7 +124,7 @@
 <script>
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
-import ButtonPreloader from "@/components/ButtonPreloader.vue";
+import ButtonPreloader from "@/components/preloaders/ButtonPreloader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import SuccessModal from "@/components/SuccessModal.vue";

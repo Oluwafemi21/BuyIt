@@ -77,10 +77,11 @@ export default {
         handleChange(event) {
             if (event.target.value === "prev") {
                 this.currentPage -= 1;
-                console.log("Prev", this.currentPage);
+                // console.log("Prev", this.currentPage);
                 this.$emit("pageChange", this.currentPage);
             } else if (event.target.value === "next") {
                 this.currentPage += 1;
+                // console.log("Next", this.currentPage);
                 this.$emit("pageChange", this.currentPage);
             } else {
                 this.currentPage = parseInt(event.target.value);

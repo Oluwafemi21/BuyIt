@@ -1,5 +1,5 @@
 <template>
-    <div class="preloader">
+    <div class="preloader" :class="type === 'inline' ? 'inline' : 'full'">
         <div class="lds-spinner">
             <div></div>
             <div></div>
@@ -19,7 +19,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    props: {
+        type: {
+            type: String,
+            default: "full",
+        },
+    },
+};
 </script>
 
 <style>
@@ -30,7 +37,6 @@ export default {};
   left: 0;
   bottom: 0; */
     width: 100%;
-    min-height: calc(100vh - 65px);
     /* background-color: var(--dark-blue); */
     z-index: 1;
     display: flex;
@@ -39,11 +45,18 @@ export default {};
     flex-direction: column;
     gap: 10px;
 }
+.preloader.full {
+    min-height: calc(100vh - 65px);
+}
+
+.preloader.inline {
+    height: 10vh;
+}
 
 .preloader p {
     color: var(--dark-green);
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 24px;
 }
 
 .lds-spinner {

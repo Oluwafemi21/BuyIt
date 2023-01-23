@@ -68,7 +68,7 @@
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
 import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
-import ProductPreloader from "@/components/ProductPreloader.vue";
+import ProductPreloader from "@/components/preloaders/ProductPreloader.vue";
 import { mapActions, mapState } from "vuex";
 
 import axios from "axios";

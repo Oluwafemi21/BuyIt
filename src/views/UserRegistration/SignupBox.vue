@@ -208,7 +208,7 @@
 
 <script>
 import ActionButton from "@/components/ActionButton.vue";
-import ButtonPreloader from "@/components/ButtonPreloader.vue";
+import ButtonPreloader from "@/components/preloaders/ButtonPreloader.vue";
 import axios from "axios";
 
 export default {

@@ -96,7 +96,7 @@
 
 <script>
 import ActionButton from "@/components/ActionButton.vue";
-import ButtonPreloader from "@/components/ButtonPreloader.vue";
+import ButtonPreloader from "@/components/preloaders/ButtonPreloader.vue";
 import { mapActions } from "vuex";
 
 import axios from "axios";

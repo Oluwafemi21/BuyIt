@@ -70,11 +70,15 @@
                         <button
                             class="log-out auth-link"
                             @click="logout"
-                            aria-label="Logout"
+                            aria-label="mobile logout"
                         >
                             Logout
                         </button>
-                        <div class="nav-profile">
+                        <button
+                            aria-label="desktop logout"
+                            @click="showDropDown = !showDropDown"
+                            class="nav-profile"
+                        >
                             <img
                                 :src="getHash"
                                 :alt="user.first_name + ' ' + user.last_name"
@@ -153,7 +157,7 @@
                                     <span>Logout</span>
                                 </button>
                             </div>
-                        </div>
+                        </button>
                     </template>
                 </div>
 
@@ -351,6 +355,7 @@ a.active__page,
     gap: 10px;
     position: relative;
     margin-left: 15px;
+    background: transparent;
 }
 
 .nav-profile img {

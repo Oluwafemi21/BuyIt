@@ -21,17 +21,30 @@
         </div>
         <product-preloader v-else> Loading products... </product-preloader>
     </div>
+    <div class="pagination">
+        <vue-awesome-paginate
+            :total-items="total"
+            :max-pages-shown="3"
+            v-model="page"
+            :show-breakpoint-buttons="false"
+            :on-click="fetchNewPage"
+            paginate-buttons-class="btn"
+            active-page-class="btn-active"
+            back-button-class="back-btn"
+            next-button-class="next-btn"
+            :hide-prev-next-when-ends="true"
+        />
+    </div>
 
-    <page-index @page-change="fetchNewPage" :total="total" />
-    <p>Page - {{ page }}</p>
+    <!-- <page-index @page-change="fetchNewPage" :total="total" /> -->
     <main-footer />
 </template>
 
 <script>
 import SubHeader from "@/components/SubHeader.vue";
 import ProductCard from "@/components/home_components/cards/ProductCard.vue";
-import ProductPreloader from "@/components/ProductPreloader.vue";
-import PageIndex from "@/components/PageIndex.vue";
+import ProductPreloader from "@/components/preloaders/ProductPreloader.vue";
+// import PageIndex from "@/components/PageIndex.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import MainFooter from "@/components/MainFooter.vue";
 
@@ -42,7 +55,6 @@ export default {
     components: {
         SubHeader,
         ProductCard,
-        PageIndex,
         MainHeader,
         MainFooter,
         "product-preloader": ProductPreloader,
@@ -86,3 +98,40 @@ export default {
     },
 };
 </script>
+
+<style>
+.btn {
+    border: none;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    border: 2px solid var(--grey-2);
+    font-size: 1.7rem;
+    margin-inline: 5px;
+    cursor: pointer;
+}
+
+.back-btn,
+.next-btn {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #083e46;
+    border-color: #083e46;
+    color: white;
+}
+
+.btn-active {
+    background-color: #083e46;
+    color: white;
+    border-color: #083e46;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+</style>
