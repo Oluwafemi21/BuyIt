@@ -111,4 +111,21 @@ export default {
 .hero__text p {
     margin-bottom: 1rem;
 }
+
+@media (min-width: 2000px) {
+    .hero__section {
+        background-position: 70% 12%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #e3e6f3;
+        height: 50vh;
+    }
+}
+
+@media (min-width: 3000px) {
+    .hero__section {
+        background-position: 60% 30%;
+        /* background-size: cover; */
+    }
+}
 </style>
