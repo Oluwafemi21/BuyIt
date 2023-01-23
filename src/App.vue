@@ -39,12 +39,33 @@ export default {
 
 html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
 }
 
 body {
     color: var(--text);
     width: 100%;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #d6d6d6;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 24px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color: #d6d6d6;
+    border-radius: 24px;
 }
 
 section {
