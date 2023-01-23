@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <p class="copyright">
-                    Buy-It. &copy; 2022. Built by Fexavier with
+                    Buy-It. &copy; {{date}}. Built by Fexavier with
                     <span>Vue.❤️</span>
                 </p>
             </div>
@@ -165,6 +165,11 @@
 <script>
 export default {
     name: "MainFooter",
+    data(){
+        return {
+            date: new Date().getFullYear(),
+        }
+    }
 };
 </script>
 
