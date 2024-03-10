@@ -1,10 +1,8 @@
 <template>
-    <main-header />
     <div class="container">
-        
-
         <div class="form-section">
             <form>
+                <h1> Contact Us </h1>
                 <span>Leave a message</span>
                 <h3>We love to hear from you</h3>
 
@@ -36,7 +34,7 @@ import ActionButton from "@/components/ActionButton.vue";
 import MainHeader from "@/components/MainHeader.vue";
 export default {
     components: { ActionButton, MainHeader,},
-    name: "ContactView",
+    name: "ContactSection",
    
 };
 </script>
@@ -47,11 +45,15 @@ span {
     text-transform: uppercase;
     font-size: 1.5rem;
 }
+h1{
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
 .form-section {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     padding-block: 5rem;
     gap: 3rem;
 }

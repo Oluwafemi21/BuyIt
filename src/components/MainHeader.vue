@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="top__navigation">
                 <router-link to="/">
-                    <h3 class="logo">Buy-It</h3>
+                    <h3 class="logo">S-Mart</h3>
                 </router-link>
 
                 <div class="nav__links" :class="{ activeNav: showSideNav }">
@@ -21,169 +21,15 @@
                         />
                     </svg>
                     <router-link @click="hideNav" to="/">Home</router-link>
-                    <router-link @click="hideNav" to="/shop">Shop</router-link>
-                    <router-link @click="hideNav" to="/blog">Blog</router-link>
+                    <router-link @click="hideNav" to="/shop">Products</router-link>
                     <router-link @click="hideNav" to="/about"
                         >About</router-link
                     >
                     <router-link @click="hideNav" to="/contact"
-                        >Contact</router-link
-                    >
-                    <router-link
-                        @click="hideNav"
-                        to="/cart"
-                        class="desktop-cart"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            class="bi bi-bag"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-                            />
-                        </svg>
-                        <div class="qty" v-if="cart.length >= 1">
-                            <span>{{ cart.length }}</span>
-                        </div>
-                    </router-link>
-                    <template v-if="!user">
-                        <router-link
-                            @click="hideNav"
-                            to="/login"
-                            class="auth-link"
-                            >Login</router-link
-                        >
-                        <router-link
-                            @click="hideNav"
-                            to="/signup"
-                            class="auth-link"
-                        >
-                            <action-button>Sign Up</action-button>
-                        </router-link>
-                    </template>
-
-                    <template v-else>
-                        <button
-                            class="log-out auth-link"
-                            @click="logout"
-                            aria-label="mobile logout"
-                        >
-                            Logout
-                        </button>
-                        <button
-                            aria-label="desktop logout"
-                            @click="showDropDown = !showDropDown"
-                            class="nav-profile"
-                        >
-                            <img
-                                :src="getHash"
-                                :alt="user.first_name + ' ' + user.last_name"
-                            />
-                            <span class="name"
-                                >&#128075; Hi, {{ user.first_name }}!</span
-                            >
-
-                            <svg
-                                @mouseenter="showDropDown = !showDropDown"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="18"
-                                height="18"
-                                fill="currentColor"
-                                class="bi bi-chevron-down"
-                                viewBox="0 0 16 16"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                                />
-                            </svg>
-                            <div
-                                class="dropdown"
-                                v-if="showDropDown"
-                                @mouseleave="showDropDown = !showDropDown"
-                            >
-                                <div class="dropdown-profile">
-                                    <span>Signed in as</span>
-                                    <span class="dropdown-name">{{
-                                        user.first_name + " " + user.last_name
-                                    }}</span>
-                                </div>
-                                <router-link
-                                    :to="{ name: 'shop' }"
-                                    class="dropdown-link"
-                                    aria-label="Go to shop"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="1em"
-                                        height="1em"
-                                        fill="currentColor"
-                                        class="bi bi-box-arrow-up-right"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                                        />
-                                    </svg>
-                                    <span>Go to Shop</span>
-                                </router-link>
-                                <button
-                                    @click="logout"
-                                    class="dropdown-link"
-                                    aria-label="Logout"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="1em"
-                                        height="1em"
-                                        fill="currentColor"
-                                        class="bi bi-power dropdown-logout"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M7.5 1v7h1V1h-1z" />
-                                        <path
-                                            d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"
-                                        />
-                                    </svg>
-                                    <span>Logout</span>
-                                </button>
-                            </div>
-                        </button>
-                    </template>
+                        >Contact</router-link>                    
                 </div>
 
                 <div class="mobile-menu">
-                    <router-link
-                        to="/cart"
-                        class="mobile-cart"
-                        aria-label="Go to cart"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            class="bi bi-bag"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-                            />
-                        </svg>
-                        <div class="qty" v-if="cart.length >= 1">
-                            <span>{{ cart.length }}</span>
-                        </div>
-                    </router-link>
-
                     <svg
                         @click="showNav"
                         xmlns="http://www.w3.org/2000/svg"

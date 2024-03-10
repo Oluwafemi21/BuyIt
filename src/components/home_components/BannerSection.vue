@@ -2,7 +2,7 @@
     <section class="banner">
         <div class="container">
             <p>Discount Sales</p>
-            <h2>Get up to 70% Off on All t-shirts and accessories!</h2>
+            <h2>Get up to 70% Off on All items and accessories!</h2>
             <router-link to="/shop" aria-label="Go to shop">
                 <button aria-label="Explore Now">Explore Now</button>
             </router-link>

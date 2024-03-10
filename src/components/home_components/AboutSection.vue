@@ -1,7 +1,9 @@
 <template>
-    <main-header />
     <div class="container">
+        <h1 class="top">About Us</h1>
         <article>
+            <div class="about-us">
+                
             <img
                 src="@/assets/images/a6.webp"
                 class="about-img"
@@ -17,6 +19,7 @@
                     providing you with the best service possible.
                 </p>
             </div>
+        </div>
         </article>
         <div class="video-section">
             <h1>Download Our <a href="/">App</a></h1>
@@ -30,9 +33,7 @@
 </template>
 
 <script>
-import MainHeader from "@/components/MainHeader.vue";
 export default {
-    components: { MainHeader,},
     name: "AboutView",
 };
 </script>
@@ -43,15 +44,23 @@ article {
     gap: 4rem;
     margin-bottom: 2.5rem;
 }
+.top{
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.about-us{
+    margin-top: 5rem;
+    display: flex;
+    gap: 5rem;
+}
 .about-img {
-margin-top: 5rem;
     height: 50vh;
     width: 50%;
     object-fit: cover;
 }
 
 .about-text {
-    margin-top: 5rem;
     width: 50%;
 }
 
@@ -82,6 +91,9 @@ margin-top: 5rem;
 
 @media (max-width: 499px) {
     article {
+        flex-direction: column;
+    }
+    .about-us{
         flex-direction: column;
     }
     .about-img,
